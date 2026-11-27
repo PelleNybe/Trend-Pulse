@@ -28,7 +28,7 @@ filelock==4.2.1
 flatbuffers==25.12.19
 frozendict==2.4.7
 fsspec==2026.6.0
-googleapis-common-protos==1.73.0
+googleapis-common-protos==1.76.0
 greenlet==3.5.6
 h11==0.16.0
 h2==4.4.1
