@@ -4,7 +4,7 @@ Jinja2==3.1.6
 MarkupSafe==3.0.3
 PyPika==0.51.1
 PyYAML==6.0.3
-Pygments==2.19.2
+Pygments==2.20.0
 SQLAlchemy==2.0.48
 Werkzeug==3.1.9
 annotated-doc==0.0.4
@@ -76,7 +76,7 @@ redis==7.3.0
 referencing==0.37.0
 regex==2026.2.28
 requests-oauthlib==2.0.0
-requests==2.32.5
+requests==2.33.0
 rich==14.3.3
 rpds-py==0.30.0
 setuptools==84.1.0
