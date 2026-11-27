@@ -77,7 +77,7 @@ referencing==0.37.0
 regex==2026.2.28
 requests-oauthlib==2.0.0
 requests==2.32.5
-rich==14.3.3
+rich==15.0.0
 rpds-py==0.30.0
 setuptools==84.1.0
 shellingham==1.5.4
