@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trendpulse
+  labels:
+    app: trendpulse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trendpulse
+  template:
+    metadata:
+      labels:
+        app: trendpulse
+    spec:
+      containers:
+      - name: trendpulse
+        image: trendpulse:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: trendpulse-config
+        - secretRef:
+            name: trendpulse-secrets
+        volumeMounts:
+        - mountPath: /app/mem0_data
+          name: mem0-data
+      volumes:
+      - name: mem0-data
+        persistentVolumeClaim:
+          claimName: mem0-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mem0-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trendpulse
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: trendpulse

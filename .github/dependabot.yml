@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "pip" # Python dependencies
+    directory: "/"           # Directory containing requirements.txt
+    schedule:
+      interval: "weekly"     # How often to check for updates
+    assignees:
+      - "PelleNybe"
+
+  - package-ecosystem: "docker" # Docker dependencies
+    directory: "/"              # Directory containing Dockerfile
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions" # GitHub Actions
+    directory: "/"                      # Check workflow files
+    schedule:
+      interval: "weekly"

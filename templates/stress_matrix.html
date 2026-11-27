@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Matrix | Trend Pulse by Corax CoLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        body { background: #0a0a1a; color: #e0e0ff; font-family: 'Space Grotesk', sans-serif; margin: 0; padding: 20px; }
+        .glass-panel { background: rgba(10, 10, 25, 0.6); border: 1px solid rgba(0, 240, 255, 0.2); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        h1 { color: #00f0ff; text-align: center; }
+        .footer { text-align: center; margin-top: 40px; font-size: 0.9em; opacity: 0.7; }
+        a { color: #00f0ff; text-decoration: none; }
+        .btn-back { display: inline-block; padding: 8px 16px; border: 1px solid #00f0ff; color: #00f0ff; border-radius: 5px; margin-bottom: 20px; }
+        .btn-back:hover { background: rgba(0, 240, 255, 0.1); }
+        .corr-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .corr-table th, .corr-table td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold; }
+        .corr-table th { background: rgba(0,240,255,0.1); }
+    </style>
+</head>
+<body>
+    <a href="/" class="btn-back" aria-label="Back to Nexus">← Back to Nexus</a>
+    <div class="glass-panel">
+        <h1>Stress Matrix 🔗</h1>
+        <p style="text-align: center;">Rolling 6-month correlation matrix to detect diversification breakdowns.</p>
+        <div id="loading" aria-live="polite" aria-busy="true" style="text-align: center; color: #00f0ff;">Calculating correlations...</div>
+
+        <table class="corr-table" id="corrTable" style="display: none;">
+            <thead id="corrHead"></thead>
+            <tbody id="corrBody"></tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer">Sponsor</a>
+    </div>
+
+    <script>
+        function getCellColor(value) {
+            if (value >= 0) {
+                return `rgba(0, 255, 170, ${Math.abs(value)})`; // Green for positive
+            } else {
+                return `rgba(255, 0, 85, ${Math.abs(value)})`; // Red for negative
+            }
+        }
+
+        fetch('/api/stress_matrix_data')
+            .then(r => r.json())
+            .then(data => {
+                if(data.error) throw new Error(data.error);
+                document.getElementById('loading').style.display = 'none';
+
+                const table = document.getElementById('corrTable');
+                const thead = document.getElementById('corrHead');
+                const tbody = document.getElementById('corrBody');
+
+                // Header row
+                const trHead = document.createElement('tr');
+                trHead.appendChild(document.createElement('th')); // empty corner
+                data.symbols.forEach(sym => {
+                    const th = document.createElement('th');
+                    th.textContent = sym;
+                    trHead.appendChild(th);
+                });
+                thead.appendChild(trHead);
+
+                // Data rows
+                for (let i = 0; i < data.symbols.length; i++) {
+                    const tr = document.createElement('tr');
+                    const thSym = document.createElement('th');
+                    thSym.textContent = data.symbols[i];
+                    tr.appendChild(thSym);
+
+                    for (let j = 0; j < data.symbols.length; j++) {
+                        const td = document.createElement('td');
+                        const val = data.correlation_matrix[i][j];
+                        td.textContent = val.toFixed(2);
+                        td.style.backgroundColor = getCellColor(val);
+                        // Enhance contrast
+                        if(Math.abs(val) > 0.5) td.style.color = '#000';
+                        tr.appendChild(td);
+                    }
+                    tbody.appendChild(tr);
+                }
+
+                table.style.display = 'table';
+            })
+            .catch(err => {
+                document.getElementById('loading').textContent = 'Error loading matrix: ' + err.message;
+            });
+    </script>
+</body>
+</html>

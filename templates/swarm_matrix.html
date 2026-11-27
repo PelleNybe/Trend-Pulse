@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Pulse - Omni-Channel Swarm Matrix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        :root {
+            --bg-base: #000005;
+            --neon-green: #33f20d;
+            --neon-cyan: #0df2f2;
+            --neon-pink: #f20d88;
+            --text-primary: #ffffff;
+            --text-muted: #8888aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        header {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
+            pointer-events: none; /* Let clicks pass through to 3D canvas where needed */
+        }
+
+        h1 {
+            color: var(--neon-green);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(51, 242, 13, 0.5);
+            pointer-events: auto;
+        }
+
+        .nav-return {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            pointer-events: auto;
+        }
+        .nav-return:hover { color: var(--neon-cyan); }
+
+        #canvas-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+        }
+
+        /* Overlay UI */
+        .control-panel {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid rgba(13, 242, 242, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            gap: 2rem;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .control-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-label {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
+        input[type=range]:focus { outline: none; }
+
+        .fab-deploy {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(51, 242, 13, 0.1);
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(51, 242, 13, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .fab-deploy:hover {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 40px var(--neon-green);
+            transform: scale(1.05);
+        }
+
+        .target-label {
+            position: absolute;
+            color: white;
+            font-family: monospace;
+            font-size: 14px;
+            pointer-events: none;
+            text-shadow: 0 0 5px black;
+            z-index: 5;
+            background: rgba(0,0,0,0.5);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid currentColor;
+        }
+
+        .tooltip {
+            position: absolute;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 4px;
+            color: #fff;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 12px;
+            z-index: 1000;
+        }
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>Swarm Matrix Details</h1>
+        <a href="/" class="nav-return">&larr; Control Center</a>
+    </header>
+
+    <div id="canvas-container"></div>
+
+    <!-- HTML Overlays for Target Labels -->
+    <div id="labels"></div>
+
+    <div class="control-panel">
+        <div class="control-group">
+            <label class="control-label" for="slider-agg"><span>Aggressiveness</span> <span id="val-agg">High</span></label>
+            <input type="range" id="slider-agg" min="1" max="100" value="80" aria-label="Agent Aggressiveness">
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="slider-depth"><span>Crawl Depth</span> <span id="val-depth">Level 4</span></label>
+            <input type="range" id="slider-depth" min="1" max="5" value="4" aria-label="Crawl Depth">
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="slider-sec"><span>Focus Sector</span> <span id="val-sec" style="color:var(--neon-pink)">Crypto/Tech</span></label>
+            <input type="range" id="slider-sec" min="1" max="3" value="1" aria-label="Security Policy">
+        </div>
+    </div>
+
+    <button class="fab-deploy" data-action="deploySwarm" aria-label="Deploy Swarm">Deploy<br>Swarm</button>
+
+    <script>
+        // Three.js Setup
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x000005, 0.05);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 15;
+        camera.position.y = 5;
+        camera.lookAt(0,0,0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Targets (Nodes)
+        const targetsData = [
+            { name: "Reddit (r/WSB)", pos: new THREE.Vector3(-8, 2, -5), color: 0xff4500 },
+            { name: "X (Twitter)", pos: new THREE.Vector3(6, 4, -2), color: 0x1da1f2 },
+            { name: "Bloomberg Terminal", pos: new THREE.Vector3(-4, -3, 2), color: 0x0df2f2 },
+            { name: "SEC Edgar", pos: new THREE.Vector3(5, -2, -6), color: 0x33f20d }
+        ];
+
+        const targetMeshes = [];
+        const labelsContainer = document.getElementById('labels');
+
+        targetsData.forEach((t, i) => {
+            const geo = new THREE.IcosahedronGeometry(1.5, 1);
+            const mat = new THREE.MeshBasicMaterial({
+                color: t.color,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.8
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.copy(t.pos);
+            scene.add(mesh);
+            targetMeshes.push(mesh);
+
+            // Create HTML Label
+            const label = document.createElement('div');
+            label.className = 'target-label';
+            label.innerText = t.name;
+            label.style.color = '#' + t.color.toString(16).padStart(6, '0');
+            label.id = `label-${i}`;
+            labelsContainer.appendChild(label);
+        });
+
+        // Swarm Particles (Agents)
+        const particleCount = 2000;
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        const particleColors = new Float32Array(particleCount * 3);
+        const particleData = []; // Store custom data for movement
+
+        const colorGreen = new THREE.Color(0x33f20d);
+        const colorCyan = new THREE.Color(0x0df2f2);
+
+        for (let i = 0; i < particleCount; i++) {
+            const x = (Math.random() - 0.5) * 30;
+            const y = (Math.random() - 0.5) * 30;
+            const z = (Math.random() - 0.5) * 30;
+
+            particlePositions[i*3] = x;
+            particlePositions[i*3+1] = y;
+            particlePositions[i*3+2] = z;
+
+            const isGreen = Math.random() > 0.5;
+            particleColors[i*3] = isGreen ? colorGreen.r : colorCyan.r;
+            particleColors[i*3+1] = isGreen ? colorGreen.g : colorCyan.g;
+            particleColors[i*3+2] = isGreen ? colorGreen.b : colorCyan.b;
+
+            // Assign a target to swarm around
+            const targetIndex = Math.floor(Math.random() * targetsData.length);
+
+            particleData.push({
+                targetIndex: targetIndex,
+                speed: 0.05 + Math.random() * 0.05,
+                angle: Math.random() * Math.PI * 2,
+                radius: 2 + Math.random() * 5,
+                yOffset: (Math.random() - 0.5) * 4
+            });
+        }
+
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        particlesGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+
+        // Create texture for glowing particle
+        const createCircleTexture = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32; canvas.height = 32;
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+            grad.addColorStop(0, 'rgba(255,255,255,1)');
+            grad.addColorStop(0.2, 'rgba(255,255,255,0.8)');
+            grad.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0,0,32,32);
+            return new THREE.CanvasTexture(canvas);
+        };
+
+        const particleMat = new THREE.PointsMaterial({
+            size: 0.4,
+            vertexColors: true,
+            map: createCircleTexture(),
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            depthWrite: false
+        });
+
+        const particleSystem = new THREE.Points(particlesGeo, particleMat);
+        scene.add(particleSystem);
+
+        // Lines connecting some particles to targets
+        const lineMat = new THREE.LineBasicMaterial({
+            color: 0x0df2f2,
+            transparent: true,
+            opacity: 0.15,
+            blending: THREE.AdditiveBlending
+        });
+
+        // Animation Loop
+        let aggressiveness = 0.05; // Base speed modifier
+
+
+        // Raycaster for tooltips
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        const tooltip = document.getElementById('tooltip');
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObject(particleSystem);
+
+            if (intersects.length > 0) {
+                tooltip.style.opacity = 1;
+                tooltip.style.left = event.clientX + 15 + 'px';
+                tooltip.style.top = event.clientY + 15 + 'px';
+                tooltip.textContent = "Agent Node Data active";
+            } else {
+                tooltip.style.opacity = 0;
+            }
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const time = Date.now() * 0.0001;
+
+            // Rotate Targets
+            targetMeshes.forEach((mesh, index) => {
+                mesh.rotation.x += 0.005;
+                mesh.rotation.y += 0.01;
+                mesh.position.y = targetsData[index].pos.y + Math.sin(time * 5 + index) * 0.5; // Hover
+
+                // Update HTML Label positions
+                const vector = mesh.position.clone();
+                vector.project(camera);
+                const x = (vector.x *  .5 + .5) * window.innerWidth;
+                const y = (vector.y * -.5 + .5) * window.innerHeight;
+
+                const label = document.getElementById(`label-${index}`);
+                if(label) {
+                    // Hide if behind camera
+                    if (vector.z > 1) {
+                        label.style.display = 'none';
+                    } else {
+                        label.style.display = 'block';
+                        label.style.left = `${x + 20}px`;
+                        label.style.top = `${y - 20}px`;
+                    }
+                }
+            });
+
+            // Move Swarm
+            const positions = particleSystem.geometry.attributes.position.array;
+
+            for (let i = 0; i < particleCount; i++) {
+                const data = particleData[i];
+                const target = targetMeshes[data.targetIndex].position;
+
+                // Orbit logic
+                data.angle += data.speed * aggressiveness;
+
+                // Move towards target smoothly
+                const targetX = target.x + Math.cos(data.angle) * data.radius;
+                const targetY = target.y + data.yOffset;
+                const targetZ = target.z + Math.sin(data.angle) * data.radius;
+
+                // Interpolate current pos to target pos
+                positions[i*3] += (targetX - positions[i*3]) * 0.02;
+                positions[i*3+1] += (targetY - positions[i*3+1]) * 0.02;
+                positions[i*3+2] += (targetZ - positions[i*3+2]) * 0.02;
+            }
+
+            particleSystem.geometry.attributes.position.needsUpdate = true;
+
+            // Slowly rotate entire scene for cinematic effect
+            scene.rotation.y = Math.sin(time * 0.5) * 0.2;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // UI Interactions
+        document.getElementById('slider-agg').addEventListener('input', (e) => {
+            const val = e.target.value;
+            document.getElementById('val-agg').innerText = val > 75 ? 'High' : val > 30 ? 'Med' : 'Low';
+            aggressiveness = val / 1000; // adjust speed multiplier
+        });
+
+        document.getElementById('slider-depth').addEventListener('input', (e) => {
+            document.getElementById('val-depth').innerText = `Level ${e.target.value}`;
+        });
+
+        const sectors = ['Macro/Reg', 'Crypto/Tech', 'Global Eq'];
+        document.getElementById('slider-sec').addEventListener('input', (e) => {
+            document.getElementById('val-sec').innerText = sectors[e.target.value - 1];
+        });
+
+        async function deploySwarm() {
+            const btn = document.querySelector('.fab-deploy');
+            if (!btn) return;
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+            btn.textContent = 'Starting...';
+            try {
+                const res = await fetch('/api/system/start', { method: 'POST' });
+                const payload = await res.json();
+                aggressiveness = payload.success ? 0.18 : aggressiveness;
+                const colors = particleSystem.geometry.attributes.color.array;
+                const activeColor = payload.success ? colorGreen : colorCyan;
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    colors[i] = activeColor.r;
+                    colors[i + 1] = activeColor.g;
+                    colors[i + 2] = activeColor.b;
+                }
+                particleSystem.geometry.attributes.color.needsUpdate = true;
+                btn.textContent = payload.success ? 'Swarm Active' : 'Start Failed';
+                btn.style.backgroundColor = payload.success ? 'var(--neon-green)' : 'var(--neon-pink)';
+                btn.style.color = '#000';
+                fetchSwarmStatus();
+            } catch (err) {
+                console.error('Swarm start error:', err);
+                btn.textContent = 'Retry Deploy';
+            } finally {
+                btn.disabled = false;
+                btn.setAttribute('aria-disabled', 'false');
+            }
+        }
+
+
+        // Real-time status
+        function fetchSwarmStatus() {
+            fetch('/api/system/swarm_status')
+                .then(res => res.json())
+                .then(data => {
+                    if(data.agents) {
+                        data.agents.forEach(agent => {
+                            // Basic mapping to the DOM elements
+                            // e.g. "QueryEngine" from "query"
+                            const agentMap = {
+                                "query": "QueryEngine",
+                                "media": "MediaEngine",
+                                "insight": "InsightEngine",
+                                "forum": "ForumEngine"
+                            };
+                            const domName = agentMap[agent.name];
+                            if(domName) {
+                                // Find the card by text content
+                                const cards = Array.from(document.querySelectorAll('.agent-card .agent-header h3'));
+                                const matchingCard = cards.find(c => c.textContent === domName);
+                                if(matchingCard) {
+                                    const parentCard = matchingCard.closest('.agent-card');
+                                    if(agent.status === 'running') {
+                                        parentCard.style.borderColor = 'var(--neon-green)';
+                                    } else {
+                                        parentCard.style.borderColor = 'var(--neon-magenta)';
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+        setInterval(fetchSwarmStatus, 3000);
+        fetchSwarmStatus();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+    </script>
+
+    <div id="tooltip" class="tooltip" aria-live="polite" aria-atomic="true"></div>
+<script>
+        // Event delegation for actions
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('[data-action]');
+            if (target) {
+                const action = target.getAttribute('data-action');
+                if (typeof window[action] === 'function') {
+                    window[action]();
+                }
+            }
+        });
+</script>
+    <div style="position: fixed; bottom: 6px; left: 10px; font-size: 10px; opacity: 0.65; z-index: 1000;">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Sponsor</a>
+    </div>
+</body>
+</html>

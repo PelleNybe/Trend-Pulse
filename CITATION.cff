@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Nyberg"
+    given-names: "Pelle"
+    affiliation: "Corax CoLAB"
+title: "Trend Pulse"
+version: 1.0.0
+license: MIT
+date-released: 2026-11-27
+url: "https://github.com/PelleNybe/Trend-Pulse"

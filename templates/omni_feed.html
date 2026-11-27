@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Pulse - Omni-Feed Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        :root {
+            --bg-base: #050505;
+            --bg-surface: #0a0a0f;
+            --neon-green: #33f20d;
+            --neon-blue: #0df2f2;
+            --neon-red: #f20d33;
+            --text-primary: #e0e0e0;
+            --text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(13, 242, 242, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 242, 242, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .dashboard-container {
+            padding: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(51, 242, 13, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(51, 242, 13, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--neon-green);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(13, 242, 242, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .widget::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+
+        .widget-title {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed rgba(13, 242, 242, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Tickers */
+        .ticker-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ticker-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .ticker-item:hover {
+            background: rgba(13, 242, 242, 0.1);
+            transform: translateX(5px);
+        }
+
+        .ticker-symbol {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .ticker-price {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .up { color: var(--neon-green); text-shadow: 0 0 5px var(--neon-green); }
+        .down { color: var(--neon-red); text-shadow: 0 0 5px var(--neon-red); }
+
+        /* Agent Feed */
+        .agent-feed {
+            height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            font-family: monospace;
+        }
+
+        .agent-feed::-webkit-scrollbar {
+            width: 5px;
+        }
+        .agent-feed::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 5px;
+        }
+
+        .feed-item {
+            padding: 0.8rem;
+            border-left: 3px solid var(--neon-green);
+            background: linear-gradient(90deg, rgba(51, 242, 13, 0.1), transparent);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .feed-item.warning {
+            border-left-color: var(--neon-red);
+            background: linear-gradient(90deg, rgba(242, 13, 51, 0.1), transparent);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* 3D Areas */
+        #globe-container, #swarm-container {
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
+
+        .central-widget {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3;
+        }
+
+        #swarm-container {
+            height: 100%;
+            min-height: 600px;
+        }
+
+        .nav-return {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .nav-return:hover {
+            color: var(--neon-blue);
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1><div class="status-dot"></div> Omni-Feed Pulse</h1>
+            <a href="/" class="nav-return">&larr; Return to Hub</a>
+        </header>
+
+        <div class="grid-layout">
+            <!-- Left Column -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="widget">
+                    <div class="widget-title">Live Global Sentiment</div>
+                    <div id="globe-container"></div>
+                </div>
+
+                <div class="widget" style="flex-grow: 1;">
+                    <div class="widget-title">Trending Tickers</div>
+                    <div class="ticker-list" id="trendingTickerList">
+                        <div class="ticker-item">
+                            <span class="ticker-symbol">Loading live feeds...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Column -->
+            <div class="widget central-widget">
+                <div class="widget-title">Swarm Matrix Activity</div>
+                <div id="swarm-container"></div>
+            </div>
+
+            <!-- Right Column -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="widget" style="flex-grow: 1;">
+                    <div class="widget-title">Agentic Insights</div>
+                    <div class="agent-feed" id="agent-feed" aria-live="polite" aria-atomic="false">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="widget-title">System Load</div>
+                    <canvas id="loadChart" width="100%" height="80"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+                // --- Helper functions ---
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // --- Simulate Agent Feed ---
+
+        async function fetchTrendingTickers() {
+            const tickerList = document.getElementById('trendingTickerList');
+            if (!tickerList) return;
+            try {
+                const res = await fetch('/api/market_tickers');
+                const data = await res.json();
+                if (data.success && Array.isArray(data.tickers) && data.tickers.length > 0) {
+                    tickerList.textContent = '';
+                    data.tickers.forEach(item => {
+                        const row = document.createElement('div');
+                        row.className = 'ticker-item';
+                        const sym = document.createElement('span');
+                        sym.className = 'ticker-symbol';
+                        sym.textContent = item.symbol;
+                        const price = document.createElement('span');
+                        price.className = `ticker-price ${item.up ? 'up' : 'down'}`;
+                        price.textContent = `${item.up ? '▲' : '▼'} ${Number(item.price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${item.change_pct >= 0 ? '+' : ''}${item.change_pct.toFixed(2)}%)`;
+                        row.appendChild(sym);
+                        row.appendChild(price);
+                        tickerList.appendChild(row);
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to fetch trending tickers", e);
+            }
+        }
+        fetchTrendingTickers();
+        setInterval(fetchTrendingTickers, 60000);
+
+        // Fetch combined system logs safely for Agentic Insights feed
+        const feedContainer = document.getElementById('agent-feed');
+        let knownLogs = new Set();
+
+        async function fetchRealFeed() {
+            try {
+                const response = await fetch('/api/system/logs/all');
+                if (!response.ok) return;
+                const data = await response.json();
+                const rawLines = Array.isArray(data.logs)
+                    ? data.logs
+                    : (typeof data.logs === 'string' ? data.logs.split('\n') : []);
+                const lines = rawLines.map(l => String(l)).filter(l => l.trim().length > 0).slice(-15);
+                for (let line of lines) {
+                    if (!knownLogs.has(line)) {
+                        knownLogs.add(line);
+                        if (knownLogs.size > 200) {
+                            const firstItem = knownLogs.keys().next().value;
+                            knownLogs.delete(firstItem);
+                        }
+                        const div = document.createElement('div');
+                        const lower = line.toLowerCase();
+                        const isWarning = lower.includes('error') || lower.includes('warn') || lower.includes('fail');
+                        div.className = `feed-item ${isWarning ? 'warning' : ''}`;
+                        div.textContent = line;
+                        feedContainer.prepend(div);
+                        if (feedContainer.children.length > 10) {
+                            feedContainer.removeChild(feedContainer.lastChild);
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to fetch real feed", e);
+            }
+        }
+
+        fetchRealFeed();
+        setInterval(fetchRealFeed, 2500);
+
+        // --- Three.js Live Global Sentiment Globe ---
+        const globeContainer = document.getElementById('globe-container');
+        const scene1 = new THREE.Scene();
+        const camera1 = new THREE.PerspectiveCamera(45, globeContainer.clientWidth / globeContainer.clientHeight, 0.1, 1000);
+        const renderer1 = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer1.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
+        globeContainer.appendChild(renderer1.domElement);
+
+        const geometry1 = new THREE.SphereGeometry(2, 32, 32);
+        const material1 = new THREE.MeshBasicMaterial({
+            color: 0x0df2f2,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const globe = new THREE.Mesh(geometry1, material1);
+        scene1.add(globe);
+
+        const pointsGeo = new THREE.BufferGeometry();
+        const pointsMat = new THREE.PointsMaterial({ color: 0x33f20d, size: 0.14 });
+        const hotspots = new THREE.Points(pointsGeo, pointsMat);
+        scene1.add(hotspots);
+
+        async function updateGlobeHotspots() {
+            try {
+                const res = await fetch('/api/geo_data');
+                const geoData = await res.json();
+                if (!Array.isArray(geoData)) return;
+                const pointsArray = [];
+                geoData.forEach(region => {
+                    const phi = (90 - region.lat) * (Math.PI / 180);
+                    const theta = (region.lng + 180) * (Math.PI / 180);
+                    const r = 2.02;
+                    pointsArray.push(
+                        -(r * Math.sin(phi) * Math.cos(theta)),
+                        r * Math.cos(phi),
+                        r * Math.sin(phi) * Math.sin(theta)
+                    );
+                });
+                pointsGeo.setAttribute('position', new THREE.Float32BufferAttribute(pointsArray, 3));
+            } catch (e) {
+                console.error("Failed to update globe hotspots", e);
+            }
+        }
+        updateGlobeHotspots();
+        setInterval(updateGlobeHotspots, 60000);
+
+        camera1.position.z = 6;
+
+        function animateGlobe() {
+            requestAnimationFrame(animateGlobe);
+            globe.rotation.y += 0.005;
+            hotspots.rotation.y += 0.005;
+            renderer1.render(scene1, camera1);
+        }
+        animateGlobe();
+
+        // --- Three.js Swarm Matrix ---
+        const swarmContainer = document.getElementById('swarm-container');
+        const scene2 = new THREE.Scene();
+        const camera2 = new THREE.PerspectiveCamera(60, swarmContainer.clientWidth / swarmContainer.clientHeight, 0.1, 1000);
+        const renderer2 = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer2.setSize(swarmContainer.clientWidth, swarmContainer.clientHeight);
+        swarmContainer.appendChild(renderer2.domElement);
+
+        // Particles for swarm
+        const swarmGeo = new THREE.BufferGeometry();
+        const swarmCount = 500;
+        const swarmPos = new Float32Array(swarmCount * 3);
+        const velocities = [];
+
+        for(let i=0; i<swarmCount*3; i+=3) {
+            swarmPos[i] = (Math.random() - 0.5) * 10;
+            swarmPos[i+1] = (Math.random() - 0.5) * 10;
+            swarmPos[i+2] = (Math.random() - 0.5) * 10;
+            velocities.push({
+                x: (Math.random() - 0.5) * 0.02,
+                y: (Math.random() - 0.5) * 0.02,
+                z: (Math.random() - 0.5) * 0.02
+            });
+        }
+        swarmGeo.setAttribute('position', new THREE.BufferAttribute(swarmPos, 3));
+        const swarmMat = new THREE.PointsMaterial({
+            color: 0x33f20d,
+            size: 0.05,
+            transparent: true,
+            opacity: 0.8
+        });
+        const swarmPoints = new THREE.Points(swarmGeo, swarmMat);
+        scene2.add(swarmPoints);
+
+        // Core Nodes
+        const coreGeo = new THREE.IcosahedronGeometry(0.5, 1);
+        const coreMat = new THREE.MeshBasicMaterial({ color: 0x0df2f2, wireframe: true });
+        const core1 = new THREE.Mesh(coreGeo, coreMat);
+        core1.position.set(-2, 1, 0);
+        const core2 = new THREE.Mesh(coreGeo, coreMat);
+        core2.position.set(2, -1, 0);
+        scene2.add(core1);
+        scene2.add(core2);
+
+        camera2.position.z = 8;
+
+        function animateSwarm() {
+            requestAnimationFrame(animateSwarm);
+
+            const positions = swarmPoints.geometry.attributes.position.array;
+            for(let i=0; i<swarmCount; i++) {
+                positions[i*3] += velocities[i].x;
+                positions[i*3+1] += velocities[i].y;
+                positions[i*3+2] += velocities[i].z;
+
+                // Bounce off bounds
+                if(Math.abs(positions[i*3]) > 5) velocities[i].x *= -1;
+                if(Math.abs(positions[i*3+1]) > 5) velocities[i].y *= -1;
+                if(Math.abs(positions[i*3+2]) > 5) velocities[i].z *= -1;
+            }
+            swarmPoints.geometry.attributes.position.needsUpdate = true;
+
+            core1.rotation.x += 0.01;
+            core1.rotation.y += 0.01;
+            core2.rotation.x -= 0.01;
+            core2.rotation.y -= 0.01;
+
+            scene2.rotation.y += 0.002;
+
+            renderer2.render(scene2, camera2);
+        }
+        animateSwarm();
+
+
+        // System telemetry handled by fetchRealFeed above and SocketIO below
+
+        // --- Chart.js System Load ---
+
+        const ctx = document.getElementById('loadChart').getContext('2d');
+        const loadChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 20}, (_, i) => i),
+                datasets: [{
+                    label: 'CPU Usage',
+                    data: Array.from({length: 20}, () => 0), // Start empty
+                    borderColor: '#0df2f2',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: false,
+                scales: {
+                    x: { display: false },
+                    y: { display: false, min: 0, max: 100 }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Use Socket.io to receive real system metrics
+        if (typeof io !== 'undefined') {
+            const socket = io();
+            socket.on('system_metrics', function(data) {
+                const chartData = loadChart.data.datasets[0].data;
+                chartData.shift();
+                chartData.push(data.cpu); // Use real CPU data
+                loadChart.update();
+            });
+        }
+
+
+        // Handle resizing
+        window.addEventListener('resize', () => {
+            camera1.aspect = globeContainer.clientWidth / globeContainer.clientHeight;
+            camera1.updateProjectionMatrix();
+            renderer1.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
+
+            camera2.aspect = swarmContainer.clientWidth / swarmContainer.clientHeight;
+            camera2.updateProjectionMatrix();
+            renderer2.setSize(swarmContainer.clientWidth, swarmContainer.clientHeight);
+        });
+    </script>
+    <div style="position: fixed; bottom: 6px; left: 10px; font-size: 10px; opacity: 0.65; z-index: 1000;">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Sponsor</a>
+    </div>
+</body>
+</html>

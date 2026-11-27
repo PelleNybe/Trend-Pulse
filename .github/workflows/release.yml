@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Trend Pulse ${{ github.ref_name }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+          body: |
+            ## Trend Pulse ${{ github.ref_name }}
+
+            Engineered by [Corax CoLAB](https://coraxcolab.com) | Developer: [Pelle](https://github.com/PelleNybe)
+
+            See [CHANGELOG.md](CHANGELOG.md) for the full summary of features and changes.
+
+            If you find Trend Pulse useful, consider supporting development via [Buy Me a Coffee](https://buymeacoffee.com/pellenybe).

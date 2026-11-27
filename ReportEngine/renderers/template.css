@@ -1,0 +1,1749 @@
+:root {{ /* Meaning: LightTheme variable area; Settings: Adjust related properties within this block */
+  --bg-color: {bg}; /* Meaning: Main color of page background color; Setting: Override or change this default value in themeTokens */
+  --text-color: {text_color}; /* Meaning: basic text color; setting: override or change this default value in themeTokens */
+  --primary-color: {primary_main}; /* Meaning: Main color (button/Highlight); Settings: Override or change this default value in themeTokens */
+  --primary-color-light: {primary_light}; /* Meaning: Mainly light color, used for suspension/Gradient; Settings: Override or change this default value in themeTokens */
+  --primary-color-dark: {primary_dark}; /* Meaning: Main color is dark, used for emphasis; Setting: Override or change this default value in themeTokens */
+  --secondary-color: {secondary_main}; /* Meaning: secondary color (hint/label); Settings: Override or change this default value in themeTokens */
+  --secondary-color-light: {secondary_light}; /* Meaning: light secondary color; setting: override or change this default value in themeTokens */
+  --secondary-color-dark: {secondary_dark}; /* Meaning: secondary color is dark; setting: override or change this default value in themeTokens */
+  --card-bg: {card}; /* Meaning: card/Container background color; setting: override or change this default value in themeTokens */
+  --border-color: {border}; /* Meaning: regular border color; setting: override or change this default value in themeTokens */
+  --shadow-color: {shadow}; /* Meaning: shadow base color; setting: override or change this default value in themeTokens */
+  --engine-insight-bg:
+  --engine-insight-border:
+  --engine-insight-text:
+  --engine-media-bg:
+  --engine-media-border:
+  --engine-media-text:
+  --engine-query-bg:
+  --engine-query-border:
+  --engine-query-text:
+  --engine-quote-shadow: 0 12px 30px rgba(0,0,0,0.04); /* Meaning: Engine reference shadow; setting: override or change this default value in themeTokens */
+  --swot-strength:
+  --swot-weakness:
+  --swot-opportunity:
+  --swot-threat:
+  --swot-on-light:
+  --swot-on-dark:
+  --swot-text: var(--text-color); /* Meaning: SWOT text main color; setting: override or change this default value in themeTokens */
+  --swot-muted: rgba(0,0,0,0.58); /* Meaning: SWOT secondary text color; setting: override or change this default value in themeTokens */
+  --swot-surface: rgba(255,255,255,0.92); /* Meaning: SWOT card surface color; setting: override or change this default value in themeTokens */
+  --swot-chip-bg: rgba(0,0,0,0.04); /* Meaning: SWOT label background color; setting: override or change this default value in themeTokens */
+  --swot-tag-border: var(--border-color); /* Meaning: SWOT label border; setting: override or change this default value in themeTokens */
+  --swot-card-bg: linear-gradient(135deg, rgba(76,132,255,0.04), rgba(28,127,110,0.06)), var(--card-bg); /* Meaning: SWOT card background gradient; setting: override or change this default value in themeTokens */
+  --swot-card-border: var(--border-color); /* Meaning: SWOT card border; setting: override or change this default value in themeTokens */
+  --swot-card-shadow: 0 14px 28px var(--shadow-color); /* Meaning: SWOT card shadow; setting: override or change this default value in themeTokens */
+  --swot-card-blur: none; /* Meaning: SWOT card blur; setting: override or change this default value in themeTokens */
+  --swot-cell-base: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5)); /* Meaning: Basic background color of SWOT quadrant; Setting: Override or change this default value in themeTokens */
+  --swot-cell-border: rgba(0,0,0,0.04); /* Meaning: SWOT quadrant border; setting: override or change this default value in themeTokens */
+  --swot-cell-strength-bg: linear-gradient(135deg, rgba(28,127,110,0.07), rgba(255,255,255,0.78)), var(--card-bg); /* Meaning: SWOT Strengths Quadrant background color; Setting: Override or change this default value in themeTokens */
+  --swot-cell-weakness-bg: linear-gradient(135deg, rgba(192,57,43,0.07), rgba(255,255,255,0.78)), var(--card-bg); /* Meaning: SWOT Weakness Quadrant background color; Setting: Override or change this default value in themeTokens */
+  --swot-cell-opportunity-bg: linear-gradient(135deg, rgba(31,90,179,0.07), rgba(255,255,255,0.78)), var(--card-bg); /* Meaning: SWOT Opportunity Quadrant background color; Setting: Override or change this default value in themeTokens */
+  --swot-cell-threat-bg: linear-gradient(135deg, rgba(179,107,22,0.07), rgba(255,255,255,0.78)), var(--card-bg); /* Meaning: SWOT threat quadrant background color; setting: override or change this default value in themeTokens */
+  --swot-cell-strength-border: rgba(28,127,110,0.35); /* Meaning: SWOT advantage border; setting: override or change this default value in themeTokens */
+  --swot-cell-weakness-border: rgba(192,57,43,0.35); /* Meaning: SWOT disadvantage border; setting: override or change this default value in themeTokens */
+  --swot-cell-opportunity-border: rgba(31,90,179,0.35); /* Meaning: SWOT opportunity border; setting: override or change this default value in themeTokens */
+  --swot-cell-threat-border: rgba(179,107,22,0.35); /* Meaning: SWOT threat border; setting: override or change this default value in themeTokens */
+  --swot-item-border: rgba(0,0,0,0.05); /* Meaning: SWOT entry border; setting: override or change this default value in themeTokens */
+  /* PEST Analysis Variables - Purple Cyan Color */
+  --pest-political:
+  --pest-economic:
+  --pest-social:
+  --pest-technological:
+  --pest-on-light:
+  --pest-on-dark:
+  --pest-text: var(--text-color); /* Meaning: PEST text main color; setting: override or change this default value in themeTokens */
+  --pest-muted: rgba(0,0,0,0.55); /* Meaning: PEST secondary text color; setting: override or change this default value in themeTokens */
+  --pest-surface: rgba(255,255,255,0.88); /* Meaning: PEST card surface color; setting: override or change this default value in themeTokens */
+  --pest-chip-bg: rgba(0,0,0,0.05); /* Meaning: PEST tag background color; setting: override or change this default value in themeTokens */
+  --pest-tag-border: var(--border-color); /* Meaning: PEST label border; setting: override or change this default value in themeTokens */
+  --pest-card-bg: linear-gradient(145deg, rgba(142,68,173,0.03), rgba(22,160,133,0.04)), var(--card-bg); /* Meaning: PEST card background gradient; setting: override or change this default value in themeTokens */
+  --pest-card-border: var(--border-color); /* Meaning: PEST card border; setting: override or change this default value in themeTokens */
+  --pest-card-shadow: 0 16px 32px var(--shadow-color); /* Meaning: PEST card shadow; setting: override or change this default value in themeTokens */
+  --pest-card-blur: none; /* Meaning: PEST card blur; setting: override or change this default value in themeTokens */
+  --pest-strip-base: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7)); /* Meaning: PEST strip basic background color; setting: override or change this default value in themeTokens */
+  --pest-strip-border: rgba(0,0,0,0.06); /* Meaning: PEST strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-political-bg: linear-gradient(90deg, rgba(142,68,173,0.08), rgba(255,255,255,0.85)), var(--card-bg); /* Meaning: PEST political strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-economic-bg: linear-gradient(90deg, rgba(22,160,133,0.08), rgba(255,255,255,0.85)), var(--card-bg); /* Meaning: PEST economic strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-social-bg: linear-gradient(90deg, rgba(232,67,147,0.08), rgba(255,255,255,0.85)), var(--card-bg); /* Meaning: PEST social strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-technological-bg: linear-gradient(90deg, rgba(41,128,185,0.08), rgba(255,255,255,0.85)), var(--card-bg); /* Meaning: PEST technical strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-political-border: rgba(142,68,173,0.4); /* Meaning: PEST political strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-economic-border: rgba(22,160,133,0.4); /* Meaning: PEST economic strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-social-border: rgba(232,67,147,0.4); /* Meaning: PEST social strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-technological-border: rgba(41,128,185,0.4); /* Meaning: PEST technical strip border; setting: override or change this default value in themeTokens */
+  --pest-item-border: rgba(0,0,0,0.06); /* Meaning: PEST entry border; setting: override or change this default value in themeTokens */
+}} /* Finish :root */
+.dark-mode {{ /* Meaning: DarkTheme variable area; Settings: Adjust related properties within this block */
+  --bg-color:
+  --text-color:
+  --primary-color:
+  --primary-color-light:
+  --primary-color-dark:
+  --secondary-color:
+  --secondary-color-light:
+  --secondary-color-dark:
+  --card-bg:
+  --border-color:
+  --shadow-color: rgba(0, 0, 0, 0.4); /* Meaning: shadow base color; setting: override or change this default value in themeTokens */
+  --engine-insight-bg: rgba(145, 202, 255, 0.08); /* Meaning: Insight engine card background; setting: override or change this default value in themeTokens */
+  --engine-insight-border: rgba(145, 202, 255, 0.45); /* Meaning: Insight engine border; setting: override or change this default value in themeTokens */
+  --engine-insight-text:
+  --engine-media-bg: rgba(255, 196, 138, 0.08); /* Meaning: Media engine card background; setting: override or change this default value in themeTokens */
+  --engine-media-border: rgba(255, 196, 138, 0.45); /* Meaning: Media engine border; setting: override or change this default value in themeTokens */
+  --engine-media-text:
+  --engine-query-bg: rgba(141, 215, 165, 0.08); /* Meaning: Query engine card background; setting: override or change this default value in themeTokens */
+  --engine-query-border: rgba(141, 215, 165, 0.45); /* Meaning: Query engine border; setting: override or change this default value in themeTokens */
+  --engine-query-text:
+  --engine-quote-shadow: 0 12px 28px rgba(0, 0, 0, 0.35); /* Meaning: Engine reference shadow; setting: override or change this default value in themeTokens */
+  --swot-strength:
+  --swot-weakness:
+  --swot-opportunity:
+  --swot-threat:
+  --swot-on-light:
+  --swot-on-dark:
+  --swot-text:
+  --swot-muted: rgba(230,240,255,0.75); /* Meaning: SWOT secondary text color; setting: override or change this default value in themeTokens */
+  --swot-surface: rgba(255,255,255,0.08); /* Meaning: SWOT card surface color; setting: override or change this default value in themeTokens */
+  --swot-chip-bg: rgba(255,255,255,0.14); /* Meaning: SWOT label background color; setting: override or change this default value in themeTokens */
+  --swot-tag-border: rgba(255,255,255,0.24); /* Meaning: SWOT label border; setting: override or change this default value in themeTokens */
+  --swot-card-bg: radial-gradient(140% 140% at 18% 18%, rgba(110,168,254,0.18), transparent 55%), radial-gradient(120% 140% at 82% 0%, rgba(28,127,110,0.16), transparent 52%), linear-gradient(160deg,
+  --swot-card-border: rgba(255,255,255,0.14); /* Meaning: SWOT card border; setting: override or change this default value in themeTokens */
+  --swot-card-shadow: 0 24px 60px rgba(0, 0, 0, 0.58); /* Meaning: SWOT card shadow; setting: override or change this default value in themeTokens */
+  --swot-card-blur: blur(12px); /* Meaning: SWOT card blur; setting: override or change this default value in themeTokens */
+  --swot-cell-base: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); /* Meaning: Basic background color of SWOT quadrant; Setting: Override or change this default value in themeTokens */
+  --swot-cell-border: rgba(255,255,255,0.2); /* Meaning: SWOT quadrant border; setting: override or change this default value in themeTokens */
+  --swot-cell-strength-bg: linear-gradient(150deg, rgba(28,127,110,0.28), rgba(28,127,110,0.12)), var(--swot-cell-base); /* Meaning: SWOT Strengths Quadrant background color; Setting: Override or change this default value in themeTokens */
+  --swot-cell-weakness-bg: linear-gradient(150deg, rgba(192,57,43,0.32), rgba(192,57,43,0.14)), var(--swot-cell-base); /* Meaning: SWOT Weakness Quadrant background color; Setting: Override or change this default value in themeTokens */
+  --swot-cell-opportunity-bg: linear-gradient(150deg, rgba(31,90,179,0.28), rgba(31,90,179,0.12)), var(--swot-cell-base); /* Meaning: SWOT Opportunity Quadrant background color; Setting: Override or change this default value in themeTokens */
+  --swot-cell-threat-bg: linear-gradient(150deg, rgba(179,107,22,0.32), rgba(179,107,22,0.14)), var(--swot-cell-base); /* Meaning: SWOT threat quadrant background color; setting: override or change this default value in themeTokens */
+  --swot-cell-strength-border: rgba(28,127,110,0.65); /* Meaning: SWOT advantage border; setting: override or change this default value in themeTokens */
+  --swot-cell-weakness-border: rgba(192,57,43,0.68); /* Meaning: SWOT disadvantage border; setting: override or change this default value in themeTokens */
+  --swot-cell-opportunity-border: rgba(31,90,179,0.68); /* Meaning: SWOT opportunity border; setting: override or change this default value in themeTokens */
+  --swot-cell-threat-border: rgba(179,107,22,0.68); /* Meaning: SWOT threat border; setting: override or change this default value in themeTokens */
+  --swot-item-border: rgba(255,255,255,0.14); /* Meaning: SWOT entry border; setting: override or change this default value in themeTokens */
+  /* PEST Analyze Variables - Dark Mode */
+  --pest-political:
+  --pest-economic:
+  --pest-social:
+  --pest-technological:
+  --pest-on-light:
+  --pest-on-dark:
+  --pest-text:
+  --pest-muted: rgba(240,244,255,0.7); /* Meaning: PEST secondary text color; setting: override or change this default value in themeTokens */
+  --pest-surface: rgba(255,255,255,0.06); /* Meaning: PEST card surface color; setting: override or change this default value in themeTokens */
+  --pest-chip-bg: rgba(255,255,255,0.12); /* Meaning: PEST tag background color; setting: override or change this default value in themeTokens */
+  --pest-tag-border: rgba(255,255,255,0.22); /* Meaning: PEST label border; setting: override or change this default value in themeTokens */
+  --pest-card-bg: radial-gradient(130% 130% at 15% 15%, rgba(165,105,189,0.16), transparent 50%), radial-gradient(110% 130% at 85% 5%, rgba(72,201,176,0.14), transparent 48%), linear-gradient(155deg,
+  --pest-card-border: rgba(255,255,255,0.12); /* Meaning: PEST card border; setting: override or change this default value in themeTokens */
+  --pest-card-shadow: 0 28px 65px rgba(0, 0, 0, 0.55); /* Meaning: PEST card shadow; setting: override or change this default value in themeTokens */
+  --pest-card-blur: blur(10px); /* Meaning: PEST card blur; setting: override or change this default value in themeTokens */
+  --pest-strip-base: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); /* Meaning: PEST strip basic background color; setting: override or change this default value in themeTokens */
+  --pest-strip-border: rgba(255,255,255,0.18); /* Meaning: PEST strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-political-bg: linear-gradient(90deg, rgba(142,68,173,0.25), rgba(142,68,173,0.1)), var(--pest-strip-base); /* Meaning: PEST political strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-economic-bg: linear-gradient(90deg, rgba(22,160,133,0.25), rgba(22,160,133,0.1)), var(--pest-strip-base); /* Meaning: PEST economic strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-social-bg: linear-gradient(90deg, rgba(232,67,147,0.25), rgba(232,67,147,0.1)), var(--pest-strip-base); /* Meaning: PEST social strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-technological-bg: linear-gradient(90deg, rgba(41,128,185,0.25), rgba(41,128,185,0.1)), var(--pest-strip-base); /* Meaning: PEST technical strip background color; setting: override or change this default value in themeTokens */
+  --pest-strip-political-border: rgba(165,105,189,0.6); /* Meaning: PEST political strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-economic-border: rgba(72,201,176,0.6); /* Meaning: PEST economic strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-social-border: rgba(240,98,146,0.6); /* Meaning: PEST social strip border; setting: override or change this default value in themeTokens */
+  --pest-strip-technological-border: rgba(93,173,226,0.6); /* Meaning: PEST technical strip border; setting: override or change this default value in themeTokens */
+  --pest-item-border: rgba(255,255,255,0.12); /* Meaning: PEST entry border; setting: override or change this default value in themeTokens */
+}} /* Finish .dark-mode */
+* {{ box-sizing: border-box; }} /* Meaning: Globally unify the box model to avoid calculation errors of inner and outer margins; Settings: Normally maintained border-box，If you need native behavior, you can change it to content-box */
+body {{ /* Meaning: Global layout and background settings; Settings: Adjust related attributes within this block */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  font-family: {body_font}; /* Meaning: font family; settings: adjust values/colors/variables as needed */
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0)) fixed, var(--bg-color); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color: var(--text-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.7; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+  min-height: 100vh; /* Meaning: Minimum height to prevent collapse; Settings: Adjust values/colors/variables as needed */
+  transition: background-color 0.45s ease, color 0.45s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+}} /* Finish body */
+.report-header, main, .hero-section, .chapter, .chart-card, .callout, .engine-quote, .kpi-card, .toc, .table-wrap {{ /* Meaning: Unified transition animation for commonly used containers; Settings: Adjust related properties within this block */
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .report-header, main, .hero-section, .chapter, .chart-card, .callout, .engine-quote, .kpi-card, .toc, .table-wrap */
+.report-header {{ /* Meaning: Header ceiling area; Settings: Adjust related attributes in this block */
+  position: sticky; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  top: 0; /* Meaning: top offset; setting: adjust value/color/variable as needed */
+  z-index: 10; /* Meaning: cascading order; settings: adjust values/colors/variables as needed */
+  background: var(--card-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  padding: 20px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-bottom: 1px solid var(--border-color); /* Meaning: bottom border; settings: adjust value/color/variable as needed */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  gap: 16px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  box-shadow: 0 2px 6px var(--shadow-color); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .report-header */
+.tagline {{ /* Meaning: Title slogan line; Settings: Adjust related attributes within this block */
+  margin: 4px 0 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.95rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .tagline */
+.hero-section {{ /* Meaning: Main container of cover summary; Settings: Adjust related attributes in this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  gap: 24px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  padding: 24px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 20px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: linear-gradient(135deg, rgba(0,123,255,0.1), rgba(23,162,184,0.1)); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border: 1px solid rgba(0,0,0,0.08); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  margin-bottom: 32px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .hero-section */
+.hero-content {{ /* Meaning: Text area on the left side of the cover; Settings: Adjust related attributes in this block */
+  flex: 2; /* Meaning: flex space ratio; setting: adjust value/color/variable as needed */
+  min-width: 260px; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+}} /* Finish .hero-content */
+.hero-side {{ /* Meaning: KPI column on the right side of the cover; Settings: Adjust related attributes in this block */
+  flex: 1; /* Meaning: flex space ratio; setting: adjust value/color/variable as needed */
+  min-width: 220px; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+  display: grid; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Meaning: Grid column template; Settings: Adjust values/colors/variables as needed */
+  gap: 12px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+}} /* Finish .hero-side */
+@media screen {{
+  .hero-side {{
+    margin-top: 28px; /* Meaning: Move down only when the screen is displayed to avoid occlusion; Settings: Adjust the value as needed */
+  }}
+}}
+.hero-kpi {{ /* Meaning: Cover KPI card; Settings: Adjust related attributes in this block */
+  background: var(--card-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-radius: 14px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  padding: 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  box-shadow: 0 6px 16px var(--shadow-color); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .hero-kpi */
+.hero-kpi .label {{ /* Meaning: .hero-kpi .label style area; Settings: Adjust related attributes in this block */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .hero-kpi .label */
+.hero-kpi .value {{ /* Meaning: .hero-kpi .value style area; Settings: Adjust related attributes within this block */
+  font-size: 1.8rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+}} /* Finish .hero-kpi .value */
+.hero-highlights {{ /* Meaning: List of cover highlights; Settings: Adjust related attributes in this block */
+  list-style: none; /* Meaning: List style; Settings: Adjust values/colors/variables as needed */
+  padding: 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  margin: 16px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  gap: 10px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+}} /* Finish .hero-highlights */
+.hero-highlights li {{ /* Meaning: .hero-highlights li style area; Settings: Adjust related attributes in this block */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .hero-highlights li */
+.badge {{ /* Meaning: Badge label; Settings: Adjust related attributes in this block */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  padding: 6px 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 999px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: rgba(0,0,0,0.05); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .badge */
+.broken-link {{ /* Meaning: Invalid link prompt style; Settings: Adjust related attributes in this block */
+  text-decoration: underline dotted; /* Meaning: Text decoration; Settings: Adjust values/colors/variables as needed */
+  color: var(--primary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .broken-link */
+.hero-actions {{ /* Meaning: Cover operation button container; Settings: Adjust related properties within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  gap: 12px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+}} /* Finish .hero-actions */
+.ghost-btn {{ /* Meaning: Secondary button style; Settings: Adjust related properties within this block */
+  border: 1px solid var(--primary-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  background: transparent; /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color: var(--primary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  border-radius: 999px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  padding: 8px 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  cursor: pointer; /* Meaning: Mouse pointer style; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .ghost-btn */
+.hero-summary {{ /* Meaning: Cover abstract text; Settings: Adjust related attributes in this block */
+  font-size: 1.05rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 500; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-top: 0; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .hero-summary */
+.llm-error-block {{ /* Meaning: LLM Errors prompt container; Settings: Adjust related properties within this block */
+  border: 1px dashed var(--secondary-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  padding: 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  margin: 12px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  background: rgba(229,62,62,0.06); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .llm-error-block */
+.llm-error-block.importance-critical {{ /* Meaning: .llm-error-block.importance-critical style area; Settings: Adjust related properties within this block */
+  border-color: var(--secondary-color-dark); /* Meaning: border-color style attribute; setting: adjust value/color/variable as needed */
+  background: rgba(229,62,62,0.12); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+}} /* Finish .llm-error-block.importance-critical */
+.llm-error-block::after {{ /* Meaning: .llm-error-block::after style area; Settings: Adjust related properties within this block */
+  content: attr(data-raw); /* Meaning: content style attribute; setting: adjust the value as needed/color/variable */
+  white-space: pre-wrap; /* Meaning: Blank and line break strategy; Settings: Adjust values/colors/variables as needed */
+  position: absolute; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  left: 0; /* Meaning: left style attribute; setting: adjust value/color/variable as needed */
+  right: 0; /* Meaning: right style attribute; setting: adjust the value as needed/color/variable */
+  bottom: 100%; /* Meaning: bottom style attribute; setting: adjust the value as needed/color/variable */
+  max-height: 240px; /* Meaning: max-height style attribute; setting: adjust value/color/variable as needed */
+  overflow: auto; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+  background: rgba(0,0,0,0.85); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color:
+  font-size: 0.85rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  padding: 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 10px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  margin-bottom: 8px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+  opacity: 0; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+  pointer-events: none; /* Meaning: pointer-events style attributes; settings: adjust values/colors/variables as needed */
+  transition: opacity 0.2s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+  z-index: 20; /* Meaning: cascading order; settings: adjust values/colors/variables as needed */
+}} /* Finish .llm-error-block::after */
+.llm-error-block:hover::after {{ /* Meaning: .llm-error-block:hover::after style area; settings: adjust related properties within this block */
+  opacity: 1; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .llm-error-block:hover::after */
+.report-header h1 {{ /* Meaning: Header main title; Settings: Adjust related attributes in this block */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  font-size: 1.6rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--primary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .report-header h1 */
+.report-header .subtitle {{ /* Meaning: Header subtitle; Settings: Adjust related attributes in this block */
+  margin: 4px 0 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .report-header .subtitle */
+.header-actions {{ /* Meaning: Header button group; Settings: Adjust related properties within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 12px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+}} /* Finish .header-actions */
+theme-button {{ /* Meaning: Theme switching component; Settings: Adjust related properties within this block */
+  display: inline-block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  vertical-align: middle; /* Meaning: vertical-align style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish theme-button */
+.cover {{ /* Meaning: Cover area; Settings: Adjust related attributes within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  margin: 20px 0 40px; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .cover */
+.cover h1 {{ /* Meaning: .cover h1 style area; settings: adjust related attributes within this block */
+  font-size: 2.4rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  margin: 0.4em 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .cover h1 */
+.cover-hint {{ /* Meaning: .cover-hint style area; Settings: Adjust related properties within this block */
+  letter-spacing: 0.4em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.95rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .cover-hint */
+.cover-subtitle {{ /* Meaning: .cover-subtitle style area; Settings: Adjust related attributes within this block */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .cover-subtitle */
+.action-btn {{ /* Meaning: Basic style of main button; Settings: Adjust related attributes in this block */
+  --mouse-x: 50%; /* Meaning: Theme variable mouse-x；Settings: Override or change this default value in themeTokens */
+  --mouse-y: 50%; /* Meaning: Theme variable mouse-y；Settings: Override or change this default value in themeTokens */
+  border: none; /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  border-radius: 10px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color:
+  padding: 11px 22px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  cursor: pointer; /* Meaning: Mouse pointer style; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.92rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  letter-spacing: 0.025em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+  min-width: 140px; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+  white-space: nowrap; /* Meaning: Blank and line break strategy; Settings: Adjust values/colors/variables as needed */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  justify-content: center; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  gap: 10px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  overflow: hidden; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .action-btn */
+.action-btn::before {{ /* Meaning: .action-btn::before style area; settings: adjust related properties within this block */
+  content: ''; /* Meaning: content style attribute; setting: adjust the value as needed/color/variable */
+  position: absolute; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  top: 0; /* Meaning: top offset; setting: adjust value/color/variable as needed */
+  left: 0; /* Meaning: left style attribute; setting: adjust value/color/variable as needed */
+  width: 100%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 100%; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  background: linear-gradient(to bottom, rgba(255,255,255,0.12), transparent); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  opacity: 0; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+  transition: opacity 0.35s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .action-btn::before */
+.action-btn::after {{ /* Meaning: .action-btn::after style area; Settings: Adjust related properties within this block */
+  content: ''; /* Meaning: content style attribute; setting: adjust the value as needed/color/variable */
+  position: absolute; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  top: var(--mouse-y); /* Meaning: top offset; setting: adjust value/color/variable as needed */
+  left: var(--mouse-x); /* Meaning: left style attribute; setting: adjust value/color/variable as needed */
+  width: 0; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 0; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-radius: 50%; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  transform: translate(-50%, -50%); /* Meaning: transform style attribute; setting: adjust the value as needed/color/variable */
+  transition: width 0.45s ease-out, height 0.45s ease-out; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+  pointer-events: none; /* Meaning: pointer-events style attributes; settings: adjust values/colors/variables as needed */
+}} /* Finish .action-btn::after */
+.action-btn:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+.action-btn:hover {{ /* Meaning: .action-btn:hover style area; Settings: Adjust related attributes within this block */
+  transform: translateY(-2px); /* Meaning: transform style attribute; setting: adjust the value as needed/color/variable */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.1); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .action-btn:hover */
+.action-btn:hover::before {{ /* Meaning: .action-btn:hover::before style area; Settings: Adjust related properties within this block */
+  opacity: 1; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .action-btn:hover::before */
+.action-btn:hover::after {{ /* Meaning: .action-btn:hover::after style area; settings: adjust related properties within this block */
+  width: 280%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 280%; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+}} /* Finish .action-btn:hover::after */
+.action-btn:active {{ /* Meaning: .action-btn:active style area; settings: adjust related attributes within this block */
+  transform: translateY(0) scale(0.98); /* Meaning: transform style attribute; setting: adjust the value as needed/color/variable */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .action-btn:active */
+.action-btn .btn-icon {{ /* Meaning: .action-btn .btn-icon style area; Settings: Adjust related attributes within this block */
+  width: 18px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 18px; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  flex-shrink: 0; /* Meaning: flex-shrink style attribute; setting: adjust value/color/variable as needed */
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15)); /* Meaning: filter effect; settings: adjust values/colors/variables as needed */
+}} /* Finish .action-btn .btn-icon */
+.theme-toggle-btn .sun-icon,
+.theme-toggle-btn .moon-icon {{ /* Meaning: Theme switch button icon style; Settings: Adjust related attributes in this block */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+}} /* end .theme-toggle-btn icon */
+.theme-toggle-btn .sun-icon {{ /* Meaning: Sun icon style; Settings: Adjust related properties in this block */
+  color:
+  stroke:
+}} /* Finish .theme-toggle-btn .sun-icon */
+.theme-toggle-btn .moon-icon {{ /* Meaning: Moon icon style; Settings: Adjust related attributes in this block */
+  color:
+  stroke:
+}} /* Finish .theme-toggle-btn .moon-icon */
+.theme-toggle-btn:hover .sun-icon {{ /* Meaning: Sun icon effect when hovering; Settings: Adjust related attributes in this block */
+  transform: rotate(15deg); /* Meaning: rotation transformation; setting: adjust value/color/variable as needed */
+}} /* Finish .theme-toggle-btn:hover .sun-icon */
+.theme-toggle-btn:hover .moon-icon {{ /* Meaning: Moon icon effect when hovering; Settings: Adjust related attributes in this block */
+  transform: rotate(-15deg) scale(1.1); /* meaning：旋转和缩放变换；设置：按需调整数值/color/variable */
+}} /* Finish .theme-toggle-btn:hover .moon-icon */
+body.exporting {{ /* Meaning: body.exporting style area; settings: adjust related properties within this block */
+  cursor: progress; /* Meaning: Mouse pointer style; Settings: Adjust values/colors/variables as needed */
+}} /* Finish body.exporting */
+.export-overlay {{ /* Meaning: Export mask layer; Settings: Adjust related properties in this block */
+  position: fixed; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  inset: 0; /* Meaning: inset style attribute; setting: adjust the value as needed/color/variable */
+  background: rgba(3, 9, 26, 0.55); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  backdrop-filter: blur(2px); /* Meaning: background blur; settings: adjust values/colors/variables as needed */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  justify-content: center; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  opacity: 0; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+  pointer-events: none; /* Meaning: pointer-events style attributes; settings: adjust values/colors/variables as needed */
+  transition: opacity 0.3s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+  z-index: 999; /* Meaning: cascading order; settings: adjust values/colors/variables as needed */
+}} /* Finish .export-overlay */
+.export-overlay.active {{ /* Meaning: .export-overlay.active style area; Settings: Adjust related properties within this block */
+  opacity: 1; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+  pointer-events: all; /* Meaning: pointer-events style attributes; settings: adjust values/colors/variables as needed */
+}} /* Finish .export-overlay.active */
+.export-dialog {{ /* Meaning: .export-dialog style area; Settings: Adjust related properties within this block */
+  background: rgba(12, 19, 38, 0.92); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  padding: 24px 32px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 18px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  color:
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  min-width: 280px; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .export-dialog */
+.export-spinner {{ /* Meaning: .export-spinner style area; Settings: Adjust related properties within this block */
+  width: 48px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 48px; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  border-radius: 50%; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 3px solid rgba(255,255,255,0.2); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  border-top-color: var(--secondary-color); /* Meaning: border-top-color style attribute; setting: adjust value/color/variable as needed */
+  margin: 0 auto 16px; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  animation: export-spin 1s linear infinite; /* Meaning: animation style attribute; setting: adjust the value as needed/color/variable */
+}} /* Finish .export-spinner */
+.export-status {{ /* Meaning: .export-status style area; Settings: Adjust related properties within this block */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  font-size: 1rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .export-status */
+.exporting *,
+.exporting *::before, /* meaning：.exporting * Style properties; settings: adjust values/colors/variables as needed */
+.exporting *::after {{ /* meaning：.exporting *::after Style area; Settings: Adjust related properties within this block */
+  animation: none !important; /* Meaning: animation style attribute; setting: adjust the value as needed/color/variable */
+  transition: none !important; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .exporting *::after */
+.export-progress {{ /* Meaning: .export-progress style area; Settings: Adjust related properties within this block */
+  width: 220px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 6px; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  background: rgba(255,255,255,0.25); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-radius: 999px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  overflow: hidden; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+  margin: 20px auto 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .export-progress */
+.export-progress-bar {{ /* Meaning: .export-progress-bar style area; Settings: Adjust related properties within this block */
+  position: absolute; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  top: 0; /* Meaning: top offset; setting: adjust value/color/variable as needed */
+  bottom: 0; /* Meaning: bottom style attribute; setting: adjust the value as needed/color/variable */
+  width: 45%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  border-radius: inherit; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  animation: export-progress 1.4s ease-in-out infinite; /* Meaning: animation style attribute; setting: adjust the value as needed/color/variable */
+}} /* Finish .export-progress-bar */
+@keyframes export-spin {{ /* meaning：@keyframes export-spin Style area; Settings: Adjust related properties within this block */
+  from {{ transform: rotate(0deg); }} /* Meaning: Keyframe starting point, hold 0° Angle; settings: can be changed to other starting rotation or scaling states */
+  to {{ transform: rotate(360deg); }} /* Meaning: keyframe end point, one rotation; setting: can be changed to a customized final angle/Effect */
+}} /* Finish @keyframes export-spin */
+@keyframes export-progress {{ /* meaning：@keyframes export-progress Style area; Settings: Adjust related properties within this block */
+  0% {{ left: -45%; }} /* Meaning: the starting point of the progress animation, the bar enters from outside the left side; setting: adjust the starting left percentage */
+  50% {{ left: 20%; }} /* Meaning: the midpoint of the progress animation, the bar is located in the middle of the container; setting: adjust the offset ratio as needed */
+  100% {{ left: 110%; }} /* Meaning: The end point of the progress animation, the bar slides out to the right; Settings: Adjust the ending left percentage */
+}} /* Finish @keyframes export-progress */
+main {{ /* Meaning: Main content container; Settings: Adjust related properties within this block */
+  max-width: {container_width}; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  margin: 40px auto; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  padding: {gutter}; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  background: var(--card-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-radius: 16px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 10px 30px var(--shadow-color); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish main */
+h1, h2, h3, h4, h5, h6 {{ /* Meaning: General style for titles; Settings: Adjust related attributes within this block */
+  font-family: {heading_font}; /* Meaning: font family; settings: adjust values/colors/variables as needed */
+  color: var(--text-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  margin-top: 2em; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  margin-bottom: 0.6em; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+  line-height: 1.35; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish h1, h2, h3, h4, h5, h6 */
+h2 {{ /* Meaning: h2 style area; settings: adjust related attributes within this block */
+  font-size: 1.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish h2 */
+h3 {{ /* Meaning: h3 style area; settings: adjust related attributes within this block */
+  font-size: 1.4rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish h3 */
+h4 {{ /* Meaning: h4 style area; settings: adjust related attributes within this block */
+  font-size: 1.2rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish h4 */
+p {{ /* Meaning: Paragraph style; Settings: Adjust related properties within this block */
+  margin: 1em 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  text-align: justify; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+}} /* Finish p */
+ul, ol {{ /* Meaning: List style; Settings: Adjust related attributes within this block */
+  margin-left: 1.5em; /* Meaning: margin-left style attribute; setting: adjust value/color/variable as needed */
+  padding-left: 0; /* Meaning: left padding/indent; settings: adjust values/colors/variables as needed */
+}} /* Finish ul, ol */
+img, canvas, svg {{ /* Meaning: Media element size limit; Settings: Adjust related attributes within this block */
+  max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  height: auto; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+}} /* Finish img, canvas, svg */
+.meta-card {{ /* Meaning: Meta Info card; Settings: Adjust related attributes in this block */
+  background: rgba(0,0,0,0.02); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  padding: 20px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border: 1px solid var(--border-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+}} /* Finish .meta-card */
+.meta-card ul {{ /* Meaning: .meta-card ul style area; Settings: Adjust related attributes within this block */
+  list-style: none; /* Meaning: List style; Settings: Adjust values/colors/variables as needed */
+  padding: 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .meta-card ul */
+.meta-card li {{ /* Meaning: .meta-card li style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  border-bottom: 1px dashed var(--border-color); /* Meaning: bottom border; settings: adjust value/color/variable as needed */
+  padding: 8px 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .meta-card li */
+.toc {{ /* Meaning: Directory container; Settings: Adjust related properties within this block */
+  margin-top: 30px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  border: 1px solid var(--border-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  padding: 20px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  background: rgba(0,0,0,0.01); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+}} /* Finish .toc */
+.toc-title {{ /* Meaning: .toc-title style area; Settings: Adjust related attributes within this block */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-bottom: 10px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .toc-title */
+.toc ul {{ /* Meaning: .toc ul style area; Settings: Adjust related properties within this block */
+  list-style: none; /* Meaning: List style; Settings: Adjust values/colors/variables as needed */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  padding: 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .toc ul */
+.toc li {{ /* Meaning: .toc li style area; settings: adjust related attributes in this block */
+  margin: 4px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .toc li */
+.toc li.level-1 {{ /* Meaning: .toc li.level-1 style area; settings: adjust related attributes in this block */
+  font-size: 1.05rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-top: 12px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .toc li.level-1 */
+.toc li.level-2 {{ /* Meaning: .toc li.level-2 style area; settings: adjust related attributes in this block */
+  margin-left: 12px; /* Meaning: margin-left style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .toc li.level-2 */
+.toc li a {{ /* Meaning: .toc li a style area; settings: adjust related attributes within this block */
+  color: var(--primary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  text-decoration: none; /* Meaning: Text decoration; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .toc li a */
+.toc li.level-3 {{ /* Meaning: .toc li.level-3 style area; settings: adjust related attributes in this block */
+  margin-left: 16px; /* Meaning: margin-left style attribute; setting: adjust value/color/variable as needed */
+  font-size: 0.95em; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .toc li.level-3 */
+.toc-desc {{ /* Meaning: .toc-desc style area; settings: adjust related properties within this block */
+  margin: 2px 0 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .toc-desc */
+.toc-desc {{ /* Meaning: .toc-desc style area; settings: adjust related properties within this block */
+  margin: 2px 0 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .toc-desc */
+.chapter {{ /* Meaning: Chapter container; Settings: Adjust related properties within this block */
+  margin-top: 40px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  padding-top: 32px; /* Meaning: padding-top style attribute; setting: adjust value/color/variable as needed */
+  border-top: 1px solid rgba(0,0,0,0.05); /* Meaning: border-top style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .chapter */
+.chapter:first-of-type {{ /* Meaning: .chapter:first-of-type style area; settings: adjust related properties within this block */
+  border-top: none; /* Meaning: border-top style attribute; setting: adjust value/color/variable as needed */
+  padding-top: 0; /* Meaning: padding-top style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .chapter:first-of-type */
+blockquote {{ /* Meaning: Quotation block - PDF basic style; Settings: Adjust related properties within this block */
+  padding: 12px 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  background: rgba(0,0,0,0.04); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-radius: 8px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border-left: none; /* Meaning: Remove the left color bar; Settings: Adjust values/colors/variables as needed */
+}} /* Finish blockquote */
+/* ==================== Blockquote Liquid glass effect - screen only ==================== */
+@media screen {{
+  blockquote {{ /* Meaning: Reference block Liquid Glass - Transparent Suspension Design; Settings: Adjust related properties within this block */
+    position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+    margin: 20px 0; /* Meaning: increase the floating space in the margin; setting: adjust the value/color/variable as needed */
+    padding: 18px 22px; /* Meaning: padding; settings: adjust values/colors/variables as needed */
+    border: none; /* Meaning: Remove the default border; Settings: Adjust values/colors/variables as needed */
+    border-radius: 20px; /* Meaning: Large rounded corners enhance the liquid feel; Settings: Adjust values/colors/variables as needed */
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%); /* Meaning: Very light transparent gradient; Settings: Adjust values/colors/variables as needed */
+    backdrop-filter: blur(24px) saturate(180%); /* Meaning: Strong background blur to achieve glass perspective; Settings: Adjust the value as needed/color/variable */
+    -webkit-backdrop-filter: blur(24px) saturate(180%); /* Meaning: Safari background blur; Settings: Adjust the value as needed/color/variable */
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 2px 8px rgba(0, 0, 0, 0.06),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15); /* Meaning: Multiple layers of shadows create a sense of suspension; Settings: Adjust values/colors/variables as needed */
+    transform: translateY(0); /* Meaning: initial position; setting: adjust value/color/variable as needed */
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; /* Meaning: elastic transition animation; settings: adjust values/colors/variables as needed */
+    overflow: visible; /* Meaning: Allow light effects to overflow; Settings: Adjust values/colors/variables as needed */
+    isolation: isolate; /* Meaning: Create a cascading context; Settings: Adjust values/colors/variables as needed */
+  }} /* End blockquote Liquid Glass Basics */
+  blockquote:hover {{ /* Meaning: Enhance the floating effect when hovering; Settings: Adjust related attributes in this block */
+    transform: translateY(-3px); /* Meaning: floating effect; setting: adjust value/color/variable as needed */
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+      inset 0 2px 6px rgba(255, 255, 255, 0.2); /* Meaning: Enhance shadows; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish blockquote:hover */
+  blockquote::after {{ /* Meaning: Top highlight reflection; Settings: Adjust related properties in this block */
+    content: ''; /* Meaning: Pseudo element content; Settings: Adjust values/colors/variables as needed */
+    position: absolute; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+    top: 0; /* Meaning: Top position; Settings: Adjust values/colors/variables as needed */
+    left: 0; /* Meaning: left position; setting: adjust value/color/variable as needed */
+    right: 0; /* Meaning: right position; setting: adjust value/color/variable as needed */
+    height: 50%; /* Meaning: Cover the upper half; Settings: Adjust values/colors/variables as needed */
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%); /* Meaning: top highlight gradient; settings: adjust value/color/variable as needed */
+    border-radius: 20px 20px 0 0; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+    pointer-events: none; /* Meaning: Does not respond to the mouse; Settings: Adjust values/colors/variables as needed */
+    z-index: -1; /* Meaning: placed below the content; settings: adjust values/colors/variables as needed */
+  }} /* Finish blockquote::after */
+  /* Darkpattern blockquote liquid glass */
+  .dark-mode blockquote {{ /* Meaning: Dark mode refers to the liquid glass block; Settings: Adjust related properties within this block */
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%); /* Meaning: Dark transparent gradient; Settings: Adjust values/colors/variables as needed */
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 2px 4px rgba(255, 255, 255, 0.05); /* Meaning: Dark shadow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode blockquote */
+  .dark-mode blockquote:hover {{ /* Meaning: Dark hover effect; Settings: Adjust related attributes within this block */
+    box-shadow:
+      0 20px 56px rgba(0, 0, 0, 0.5),
+      0 6px 20px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+      inset 0 2px 6px rgba(255, 255, 255, 0.08); /* Meaning: Dark enhanced shadow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode blockquote:hover */
+  .dark-mode blockquote::after {{ /* Meaning: Dark top highlight; Settings: Adjust related attributes in this block */
+    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%); /* Meaning: Dark highlight; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode blockquote::after */
+}} /* Finish @media screen blockquote liquid glass */
+.engine-quote {{ /* Meaning: Engine speaking block; Settings: Adjust related attributes in this block */
+  --engine-quote-bg: var(--engine-insight-bg); /* Meaning: Theme variable engine-quote-bg；Settings: Override or change this default value in themeTokens */
+  --engine-quote-border: var(--engine-insight-border); /* Meaning: Theme variable engine-quote-border；Settings: Override or change this default value in themeTokens */
+  --engine-quote-text: var(--engine-insight-text); /* Meaning: Theme variable engine-quote-text；Settings: Override or change this default value in themeTokens */
+  margin: 22px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  padding: 16px 18px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 14px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--engine-quote-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  background: var(--engine-quote-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  box-shadow: var(--engine-quote-shadow); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.65; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish .engine-quote */
+.engine-quote__header {{ /* Meaning: .engine-quote__header style area; Settings: Adjust related attributes in this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  gap: 10px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  font-weight: 650; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--engine-quote-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  margin-bottom: 8px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+  letter-spacing: 0.02em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+}} /* Finish .engine-quote__header */
+.engine-quote__dot {{ /* Meaning: .engine-quote__dot style area; Settings: Adjust related properties within this block */
+  width: 10px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 10px; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  border-radius: 50%; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: var(--engine-quote-text); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 0 0 8px rgba(0,0,0,0.02); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .engine-quote__dot */
+.engine-quote__title {{ /* Meaning: .engine-quote__title style area; Settings: Adjust related attributes in this block */
+  font-size: 0.98rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .engine-quote__title */
+.engine-quote__body > *:first-child {{ margin-top: 0; }} /* meaning：.engine-quote__body > * Style properties; settings: adjust values/colors/variables as needed */
+.engine-quote__body > *:last-child {{ margin-bottom: 0; }} /* meaning：.engine-quote__body > * Style properties; settings: adjust values/colors/variables as needed */
+.engine-quote.engine-media {{ /* Meaning: .engine-quote.engine-media style area; Settings: Adjust related properties in this block */
+  --engine-quote-bg: var(--engine-media-bg); /* Meaning: Theme variable engine-quote-bg；Settings: Override or change this default value in themeTokens */
+  --engine-quote-border: var(--engine-media-border); /* Meaning: Theme variable engine-quote-border；Settings: Override or change this default value in themeTokens */
+  --engine-quote-text: var(--engine-media-text); /* Meaning: Theme variable engine-quote-text；Settings: Override or change this default value in themeTokens */
+}} /* Finish .engine-quote.engine-media */
+.engine-quote.engine-query {{ /* Meaning: .engine-quote.engine-query style area; Settings: Adjust related properties in this block */
+  --engine-quote-bg: var(--engine-query-bg); /* Meaning: Theme variable engine-quote-bg；Settings: Override or change this default value in themeTokens */
+  --engine-quote-border: var(--engine-query-border); /* Meaning: Theme variable engine-quote-border；Settings: Override or change this default value in themeTokens */
+  --engine-quote-text: var(--engine-query-text); /* Meaning: Theme variable engine-quote-text；Settings: Override or change this default value in themeTokens */
+}} /* Finish .engine-quote.engine-query */
+.table-wrap {{ /* Meaning: table scrolling container; settings: adjust related properties within this block */
+  overflow-x: auto; /* Meaning: Horizontal overflow processing; Settings: Adjust values/colors/variables as needed */
+  margin: 20px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .table-wrap */
+table {{ /* Meaning: Basic style of table; Settings: Adjust related attributes in this block */
+  width: 100%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  border-collapse: collapse; /* Meaning: border-collapse style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish table */
+table th, table td {{ /* Meaning: Table cell; Settings: Adjust related properties within this block */
+  padding: 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border: 1px solid var(--border-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+}} /* Finish table th, table td */
+table th {{ /* Meaning: table th style area; settings: adjust related attributes within this block */
+  background: rgba(0,0,0,0.03); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+}} /* Finish table th */
+.align-center {{ text-align: center; }} /* Meaning: .align-center text-align style attribute; setting: adjust value/color/variable as needed */
+.align-right {{ text-align: right; }} /* Meaning: .align-right text-align style attribute; setting: adjust value/color/variable as needed */
+.swot-card {{ /* Meaning: SWOT card container; Settings: Adjust related properties within this block */
+  margin: 26px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  padding: 18px 18px 14px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 16px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--swot-card-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  background: var(--swot-card-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  box-shadow: var(--swot-card-shadow); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  backdrop-filter: var(--swot-card-blur); /* Meaning: background blur; settings: adjust values/colors/variables as needed */
+  position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  overflow: hidden; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-card */
+.swot-card__head {{ /* Meaning: .swot-card__head style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  gap: 16px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  align-items: flex-start; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+}} /* Finish .swot-card__head */
+.swot-card__title {{ /* Meaning: .swot-card__title style area; Settings: Adjust related attributes in this block */
+  font-size: 1.15rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 750; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-bottom: 4px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-card__title */
+.swot-card__summary {{ /* Meaning: .swot-card__summary style area; Settings: Adjust related attributes within this block */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.82; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-card__summary */
+.swot-legend {{ /* Meaning: .swot-legend style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+}} /* Finish .swot-legend */
+.swot-legend__item {{ /* Meaning: .swot-legend__item style area; Settings: Adjust related attributes within this block */
+  padding: 6px 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 999px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--swot-on-dark); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  border: 1px solid var(--swot-tag-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.16); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35); /* Meaning: Text shadow; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-legend__item */
+.swot-legend__item.strength {{ background: var(--swot-strength); }} /* Meaning: .swot-legend__item.strength background style attribute; setting: adjust value/color/variable as needed */
+.swot-legend__item.weakness {{ background: var(--swot-weakness); }} /* Meaning: .swot-legend__item.weakness background style attribute; setting: adjust value/color/variable as needed */
+.swot-legend__item.opportunity {{ background: var(--swot-opportunity); }} /* Meaning: .swot-legend__item.opportunity background style attribute; setting: adjust value/color/variable as needed */
+.swot-legend__item.threat {{ background: var(--swot-threat); }} /* Meaning: .swot-legend__item.threat background style attribute; setting: adjust value/color/variable as needed */
+.swot-grid {{ /* Meaning: SWOT quadrant grid; Settings: Adjust related properties within this block */
+  display: grid; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Meaning: Grid column template; Settings: Adjust values/colors/variables as needed */
+  gap: 12px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  margin-top: 14px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-grid */
+.swot-cell {{ /* Meaning: SWOT quadrant cell; Settings: Adjust related properties within this block */
+  border-radius: 14px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--swot-cell-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  padding: 12px 12px 10px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  background: var(--swot-cell-base); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-cell */
+.swot-cell.strength {{ border-color: var(--swot-cell-strength-border); background: var(--swot-cell-strength-bg); }} /* Meaning: .swot-cell.strength border-color style attribute; setting: adjust value/color/variable as needed */
+.swot-cell.weakness {{ border-color: var(--swot-cell-weakness-border); background: var(--swot-cell-weakness-bg); }} /* Meaning: .swot-cell.weakness border-color style attribute; setting: adjust value/color/variable as needed */
+.swot-cell.opportunity {{ border-color: var(--swot-cell-opportunity-border); background: var(--swot-cell-opportunity-bg); }} /* Meaning: .swot-cell.opportunity border-color style attribute; setting: adjust value/color/variable as needed */
+.swot-cell.threat {{ border-color: var(--swot-cell-threat-border); background: var(--swot-cell-threat-bg); }} /* Meaning: .swot-cell.threat border-color style attribute; setting: adjust value/color/variable as needed */
+.swot-cell__meta {{ /* Meaning: .swot-cell__meta style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 10px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  align-items: flex-start; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  margin-bottom: 8px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-cell__meta */
+.swot-pill {{ /* Meaning: .swot-pill style area; Settings: Adjust related properties within this block */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  justify-content: center; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  width: 36px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 36px; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  font-weight: 800; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--swot-on-dark); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  border: 1px solid var(--swot-tag-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-pill */
+.swot-pill.strength {{ background: var(--swot-strength); }} /* Meaning: .swot-pill.strength background style attribute; setting: adjust value/color/variable as needed */
+.swot-pill.weakness {{ background: var(--swot-weakness); }} /* Meaning: .swot-pill.weakness background style attribute; setting: adjust value/color/variable as needed */
+.swot-pill.opportunity {{ background: var(--swot-opportunity); }} /* Meaning: .swot-pill.opportunity background style attribute; setting: adjust value/color/variable as needed */
+.swot-pill.threat {{ background: var(--swot-threat); }} /* Meaning: .swot-pill.threat background style attribute; setting: adjust value/color/variable as needed */
+.swot-cell__title {{ /* Meaning: .swot-cell__title style area; Settings: Adjust related attributes in this block */
+  font-weight: 750; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  letter-spacing: 0.01em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-cell__title */
+.swot-cell__caption {{ /* Meaning: .swot-cell__caption style area; Settings: Adjust related attributes within this block */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.7; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-cell__caption */
+.swot-list {{ /* Meaning: SWOT entry list; Settings: Adjust related properties within this block */
+  list-style: none; /* Meaning: List style; Settings: Adjust values/colors/variables as needed */
+  padding: 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-direction: column; /* Meaning: flex spindle direction; setting: adjust value/color/variable as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-list */
+.swot-item {{ /* Meaning: SWOT entry; Settings: Adjust related properties within this block */
+  padding: 10px 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: var(--swot-surface); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--swot-item-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 12px 22px rgba(0,0,0,0.08); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-item */
+.swot-item-title {{ /* Meaning: .swot-item-title style area; Settings: Adjust related attributes in this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  font-weight: 650; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-item-title */
+.swot-item-tags {{ /* Meaning: .swot-item-tags style area; Settings: Adjust related attributes in this block */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 6px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  font-size: 0.85rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-item-tags */
+.swot-tag {{ /* Meaning: .swot-tag style area; Settings: Adjust related attributes within this block */
+  display: inline-block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  padding: 4px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 10px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: var(--swot-chip-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  border: 1px solid var(--swot-tag-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.2; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish .swot-tag */
+.swot-tag.neutral {{ /* Meaning: .swot-tag.neutral style area; Settings: Adjust related properties within this block */
+  opacity: 0.9; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-tag.neutral */
+.swot-item-desc {{ /* Meaning: .swot-item-desc style area; Settings: Adjust related attributes within this block */
+  margin-top: 4px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.92; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-item-desc */
+.swot-item-evidence {{ /* Meaning: .swot-item-evidence style area; Settings: Adjust related attributes within this block */
+  margin-top: 4px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.94; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-item-evidence */
+.swot-empty {{ /* Meaning: .swot-empty style area; Settings: Adjust related attributes within this block */
+  padding: 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px dashed var(--swot-card-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  color: var(--swot-muted); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.7; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-empty */
+
+/* ========== SWOT PDFTable layout style (hidden by default）========== */
+.swot-pdf-wrapper {{ /* Meaning: SWOT PDF table container; Settings: Adjust related properties within this block */
+  display: none; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-pdf-wrapper */
+
+/* SWOT PDFTable style definition (displayed when rendering PDF） */
+.swot-pdf-table {{ /* Meaning: .swot-pdf-table style area; Settings: Adjust related properties within this block */
+  width: 100%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  border-collapse: collapse; /* Meaning: border-collapse style attribute; setting: adjust value/color/variable as needed */
+  margin: 20px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  font-size: 13px; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  table-layout: fixed; /* Meaning: table layout algorithm; settings: adjust values/colors/variables as needed */
+}} /* Finish .swot-pdf-table */
+.swot-pdf-caption {{ /* Meaning: .swot-pdf-caption style area; Settings: Adjust related attributes within this block */
+  caption-side: top; /* Meaning: caption-side style attribute; setting: adjust value/color/variable as needed */
+  text-align: left; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-size: 1.15rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  padding: 12px 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  color: var(--text-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-pdf-caption */
+.swot-pdf-thead th {{ /* Meaning: .swot-pdf-thead th style area; Settings: Adjust related attributes within this block */
+  background:
+  padding: 10px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  text-align: left; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  border: 1px solid
+  color:
+}} /* Finish .swot-pdf-thead th */
+.swot-pdf-th-quadrant {{ width: 80px; }} /* Meaning: .swot-pdf-th-quadrant width style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-th-num {{ width: 50px; text-align: center; }} /* Meaning: .swot-pdf-th-num width style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-th-title {{ width: 22%; }} /* Meaning: .swot-pdf-th-title width style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-th-detail {{ width: auto; }} /* Meaning: .swot-pdf-th-detail width style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-th-tags {{ width: 100px; text-align: center; }} /* Meaning: .swot-pdf-th-tags width style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-summary {{ /* Meaning: .swot-pdf-summary style area; Settings: Adjust related attributes within this block */
+  padding: 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  background:
+  color:
+  font-style: italic; /* Meaning: font-style style attribute; setting: adjust value/color/variable as needed */
+  border: 1px solid
+}} /* Finish .swot-pdf-summary */
+.swot-pdf-quadrant {{ /* Meaning: .swot-pdf-quadrant style area; Settings: Adjust related properties within this block */
+  break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+  page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-pdf-quadrant */
+.swot-pdf-quadrant-label {{ /* Meaning: .swot-pdf-quadrant-label style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  vertical-align: middle; /* Meaning: vertical-align style attribute; setting: adjust value/color/variable as needed */
+  padding: 12px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  border: 1px solid
+  writing-mode: horizontal-tb; /* Meaning: writing-mode style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-pdf-quadrant-label */
+.swot-pdf-quadrant-label.swot-pdf-strength {{ background: rgba(28,127,110,0.15); color:
+.swot-pdf-quadrant-label.swot-pdf-weakness {{ background: rgba(192,57,43,0.12); color:
+.swot-pdf-quadrant-label.swot-pdf-opportunity {{ background: rgba(31,90,179,0.12); color:
+.swot-pdf-quadrant-label.swot-pdf-threat {{ background: rgba(179,107,22,0.12); color:
+.swot-pdf-code {{ /* Meaning: .swot-pdf-code style area; Settings: Adjust related properties within this block */
+  display: block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  font-size: 1.5rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 800; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-bottom: 4px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-pdf-code */
+.swot-pdf-label-text {{ /* Meaning: .swot-pdf-label-text style area; Settings: Adjust related properties within this block */
+  display: block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.75rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  letter-spacing: 0.02em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+}} /* Finish .swot-pdf-label-text */
+.swot-pdf-item-row td {{ /* Meaning: .swot-pdf-item-row td style area; Settings: Adjust related attributes within this block */
+  padding: 10px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border: 1px solid
+  vertical-align: top; /* Meaning: vertical-align style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-pdf-item-row td */
+.swot-pdf-item-row.swot-pdf-strength td {{ background: rgba(28,127,110,0.03); }} /* Meaning: .swot-pdf-item-row.swot-pdf-strength td background style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-item-row.swot-pdf-weakness td {{ background: rgba(192,57,43,0.03); }} /* Meaning: .swot-pdf-item-row.swot-pdf-weakness td background style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-item-row.swot-pdf-opportunity td {{ background: rgba(31,90,179,0.03); }} /* Meaning: .swot-pdf-item-row.swot-pdf-opportunity td background style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-item-row.swot-pdf-threat td {{ background: rgba(179,107,22,0.03); }} /* Meaning: .swot-pdf-item-row.swot-pdf-threat td background style attribute; setting: adjust value/color/variable as needed */
+.swot-pdf-item-num {{ /* Meaning: .swot-pdf-item-num style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color:
+}} /* Finish .swot-pdf-item-num */
+.swot-pdf-item-title {{ /* Meaning: .swot-pdf-item-title style area; Settings: Adjust related attributes in this block */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color:
+}} /* Finish .swot-pdf-item-title */
+.swot-pdf-item-detail {{ /* Meaning: .swot-pdf-item-detail style area; Settings: Adjust related properties within this block */
+  color:
+  line-height: 1.5; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish .swot-pdf-item-detail */
+.swot-pdf-item-tags {{ /* Meaning: .swot-pdf-item-tags style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .swot-pdf-item-tags */
+.swot-pdf-tag {{ /* Meaning: .swot-pdf-tag style area; Settings: Adjust related properties within this block */
+  display: inline-block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  padding: 3px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 4px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  font-size: 0.75rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  background:
+  color:
+  margin: 2px; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .swot-pdf-tag */
+.swot-pdf-tag--score {{ /* Meaning: .swot-pdf-tag--score style area; Settings: Adjust related attributes in this block */
+  background:
+  color:
+}} /* Finish .swot-pdf-tag--score */
+.swot-pdf-empty {{ /* Meaning: .swot-pdf-empty style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  color:
+  font-style: italic; /* Meaning: font-style style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .swot-pdf-empty */
+
+/* SWOT paging control in print mode (preserving print support for card layout） */
+@media print {{ /* Meaning: Print mode style; Settings: Adjust related attributes in this block */
+  .swot-card {{ /* Meaning: SWOT card container; Settings: Adjust related properties within this block */
+    break-inside: auto; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: auto; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-card */
+  .swot-card__head {{ /* Meaning: .swot-card__head style area; Settings: Adjust related attributes within this block */
+    break-after: avoid; /* Meaning: break-after style attribute; setting: adjust value/color/variable as needed */
+    page-break-after: avoid; /* Meaning: page-break-after style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-card__head */
+  .swot-pdf-quadrant {{ /* Meaning: .swot-pdf-quadrant style area; Settings: Adjust related properties within this block */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-pdf-quadrant */
+}} /* Finish @media print */
+
+/* ==================== PEST analysis style ==================== */
+.pest-card {{ /* Meaning: PEST card container; Settings: Adjust related properties within this block */
+  margin: 28px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  padding: 20px 20px 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 18px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--pest-card-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  background: var(--pest-card-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  box-shadow: var(--pest-card-shadow); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  backdrop-filter: var(--pest-card-blur); /* Meaning: background blur; settings: adjust values/colors/variables as needed */
+  position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  overflow: hidden; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-card */
+.pest-card__head {{ /* Meaning: .pest-card__head style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  gap: 16px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  align-items: flex-start; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  margin-bottom: 16px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-card__head */
+.pest-card__title {{ /* Meaning: .pest-card__title style area; Settings: Adjust related attributes in this block */
+  font-size: 1.18rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 750; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-bottom: 4px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+  background: linear-gradient(135deg, var(--pest-political), var(--pest-technological)); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  -webkit-background-clip: text; /* Meaning: -webkit-background-clip style attribute; settings: adjust values/colors/variables as needed */
+  -webkit-text-fill-color: transparent; /* Meaning: -webkit-text-fill-color style attribute; setting: adjust value/color/variable as needed */
+  background-clip: text; /* Meaning: background-clip style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-card__title */
+.pest-card__summary {{ /* Meaning: .pest-card__summary style area; Settings: Adjust related attributes within this block */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.8; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-card__summary */
+.pest-legend {{ /* Meaning: .pest-legend style area; Settings: Adjust related properties within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+}} /* Finish .pest-legend */
+.pest-legend__item {{ /* Meaning: .pest-legend__item style area; Settings: Adjust related attributes within this block */
+  padding: 6px 14px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 8px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  font-size: 0.85rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--pest-on-dark); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  border: 1px solid var(--pest-tag-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Meaning: Text shadow; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-legend__item */
+.pest-legend__item.political {{ background: var(--pest-political); }} /* Meaning: .pest-legend__item.political background style attribute; setting: adjust value/color/variable as needed */
+.pest-legend__item.economic {{ background: var(--pest-economic); }} /* Meaning: .pest-legend__item.economic background style attribute; setting: adjust value/color/variable as needed */
+.pest-legend__item.social {{ background: var(--pest-social); }} /* Meaning: .pest-legend__item.social background style attribute; setting: adjust value/color/variable as needed */
+.pest-legend__item.technological {{ background: var(--pest-technological); }} /* Meaning: .pest-legend__item.technological background style attribute; setting: adjust value/color/variable as needed */
+.pest-strips {{ /* Meaning: PEST strip container; Settings: Adjust related properties within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-direction: column; /* Meaning: flex spindle direction; setting: adjust value/color/variable as needed */
+  gap: 14px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-strips */
+.pest-strip {{ /* Meaning: PEST strip; Settings: Adjust related properties within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  border-radius: 14px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--pest-strip-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  background: var(--pest-strip-base); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  overflow: hidden; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Meaning: Transition animation duration/properties; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-strip */
+.pest-strip:hover {{ /* Meaning: .pest-strip:hover style area; Settings: Adjust related properties within this block */
+  transform: translateY(-2px); /* Meaning: transform style attribute; setting: adjust the value as needed/color/variable */
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-strip:hover */
+.pest-strip.political {{ border-color: var(--pest-strip-political-border); background: var(--pest-strip-political-bg); }} /* Meaning: .pest-strip.political border-color style attribute; setting: adjust value/color/variable as needed */
+.pest-strip.economic {{ border-color: var(--pest-strip-economic-border); background: var(--pest-strip-economic-bg); }} /* Meaning: .pest-strip.economic border-color style attribute; setting: adjust value/color/variable as needed */
+.pest-strip.social {{ border-color: var(--pest-strip-social-border); background: var(--pest-strip-social-bg); }} /* Meaning: .pest-strip.social border-color style attribute; setting: adjust value/color/variable as needed */
+.pest-strip.technological {{ border-color: var(--pest-strip-technological-border); background: var(--pest-strip-technological-bg); }} /* Meaning: .pest-strip.technological border-color style attribute; setting: adjust value/color/variable as needed */
+.pest-strip__indicator {{ /* Meaning: .pest-strip__indicator style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  justify-content: center; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  width: 56px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  min-width: 56px; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+  padding: 16px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  color: var(--pest-on-dark); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25); /* Meaning: Text shadow; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-strip__indicator */
+.pest-strip__indicator.political {{ background: linear-gradient(180deg, var(--pest-political), rgba(142,68,173,0.8)); }} /* Meaning: .pest-strip__indicator.political background style attribute; setting: adjust value/color/variable as needed */
+.pest-strip__indicator.economic {{ background: linear-gradient(180deg, var(--pest-economic), rgba(22,160,133,0.8)); }} /* Meaning: .pest-strip__indicator.economic background style attribute; setting: adjust value/color/variable as needed */
+.pest-strip__indicator.social {{ background: linear-gradient(180deg, var(--pest-social), rgba(232,67,147,0.8)); }} /* Meaning: .pest-strip__indicator.social background style attribute; setting: adjust value/color/variable as needed */
+.pest-strip__indicator.technological {{ background: linear-gradient(180deg, var(--pest-technological), rgba(41,128,185,0.8)); }} /* Meaning: .pest-strip__indicator.technological background style attribute; setting: adjust value/color/variable as needed */
+.pest-code {{ /* Meaning: .pest-code style area; Settings: Adjust related properties within this block */
+  font-size: 1.6rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 900; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  letter-spacing: 0.02em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+}} /* Finish .pest-code */
+.pest-strip__content {{ /* Meaning: .pest-strip__content style area; Settings: Adjust related properties within this block */
+  flex: 1; /* Meaning: flex space ratio; setting: adjust value/color/variable as needed */
+  padding: 14px 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  min-width: 0; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-strip__content */
+.pest-strip__header {{ /* Meaning: .pest-strip__header style area; Settings: Adjust related attributes within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  align-items: baseline; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  gap: 12px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  margin-bottom: 10px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+}} /* Finish .pest-strip__header */
+.pest-strip__title {{ /* Meaning: .pest-strip__title style area; settings: adjust related attributes in this block */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  font-size: 1rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-strip__title */
+.pest-strip__caption {{ /* Meaning: .pest-strip__caption style area; Settings: Adjust related attributes within this block */
+  font-size: 0.85rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.65; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-strip__caption */
+.pest-list {{ /* Meaning: PEST entry list; Settings: Adjust related properties within this block */
+  list-style: none; /* Meaning: List style; Settings: Adjust values/colors/variables as needed */
+  padding: 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-direction: column; /* Meaning: flex spindle direction; setting: adjust value/color/variable as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-list */
+.pest-item {{ /* Meaning: PEST entry; Settings: Adjust related properties within this block */
+  padding: 10px 14px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 10px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: var(--pest-surface); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--pest-item-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-item */
+.pest-item-title {{ /* Meaning: .pest-item-title style area; Settings: Adjust related attributes in this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  justify-content: space-between; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  font-weight: 650; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-item-title */
+.pest-item-tags {{ /* Meaning: .pest-item-tags style area; Settings: Adjust related properties within this block */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 6px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  font-size: 0.82rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-item-tags */
+.pest-tag {{ /* Meaning: .pest-tag style area; Settings: Adjust related properties within this block */
+  display: inline-block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  padding: 3px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 6px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: var(--pest-chip-bg); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  border: 1px solid var(--pest-tag-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.2; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish .pest-tag */
+.pest-item-desc {{ /* Meaning: .pest-item-desc style area; Settings: Adjust related properties within this block */
+  margin-top: 5px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.88; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.95rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-item-desc */
+.pest-item-source {{ /* Meaning: .pest-item-source style area; Settings: Adjust related properties within this block */
+  margin-top: 4px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  font-size: 0.88rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.9; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-item-source */
+.pest-empty {{ /* Meaning: .pest-empty style area; Settings: Adjust related properties within this block */
+  padding: 14px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 10px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px dashed var(--pest-card-border); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  color: var(--pest-muted); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  opacity: 0.65; /* Meaning: Transparency; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-empty */
+
+/* ========== PEST PDFTable layout style (hidden by default）========== */
+.pest-pdf-wrapper {{ /* Meaning: PEST PDF container; Settings: Adjust related properties within this block */
+  display: none; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-pdf-wrapper */
+
+/* PEST PDFTable style definition (displayed when rendering PDF） */
+.pest-pdf-table {{ /* Meaning: .pest-pdf-table style area; Settings: Adjust related properties within this block */
+  width: 100%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  border-collapse: collapse; /* Meaning: border-collapse style attribute; setting: adjust value/color/variable as needed */
+  margin: 20px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  font-size: 13px; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  table-layout: fixed; /* Meaning: table layout algorithm; settings: adjust values/colors/variables as needed */
+}} /* Finish .pest-pdf-table */
+.pest-pdf-caption {{ /* Meaning: .pest-pdf-caption style area; Settings: Adjust related properties within this block */
+  caption-side: top; /* Meaning: caption-side style attribute; setting: adjust value/color/variable as needed */
+  text-align: left; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-size: 1.15rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  padding: 12px 0; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  color: var(--text-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-pdf-caption */
+.pest-pdf-thead th {{ /* Meaning: .pest-pdf-thead th style area; Settings: Adjust related properties within this block */
+  background:
+  padding: 10px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  text-align: left; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  border: 1px solid
+  color:
+}} /* Finish .pest-pdf-thead th */
+.pest-pdf-th-dimension {{ width: 85px; }} /* Meaning: .pest-pdf-th-dimension width style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-th-num {{ width: 50px; text-align: center; }} /* Meaning: .pest-pdf-th-num width style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-th-title {{ width: 22%; }} /* Meaning: .pest-pdf-th-title width style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-th-detail {{ width: auto; }} /* Meaning: .pest-pdf-th-detail width style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-th-tags {{ width: 100px; text-align: center; }} /* Meaning: .pest-pdf-th-tags width style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-summary {{ /* Meaning: .pest-pdf-summary style area; Settings: Adjust related properties within this block */
+  padding: 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  background:
+  color:
+  font-style: italic; /* Meaning: font-style style attribute; setting: adjust value/color/variable as needed */
+  border: 1px solid
+}} /* Finish .pest-pdf-summary */
+.pest-pdf-dimension {{ /* Meaning: .pest-pdf-dimension style area; Settings: Adjust related properties within this block */
+  break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+  page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-pdf-dimension */
+.pest-pdf-dimension-label {{ /* Meaning: .pest-pdf-dimension-label style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  vertical-align: middle; /* Meaning: vertical-align style attribute; setting: adjust value/color/variable as needed */
+  padding: 12px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  border: 1px solid
+  writing-mode: horizontal-tb; /* Meaning: writing-mode style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-pdf-dimension-label */
+.pest-pdf-dimension-label.pest-pdf-political {{ background: rgba(142,68,173,0.12); color:
+.pest-pdf-dimension-label.pest-pdf-economic {{ background: rgba(22,160,133,0.12); color:
+.pest-pdf-dimension-label.pest-pdf-social {{ background: rgba(232,67,147,0.12); color:
+.pest-pdf-dimension-label.pest-pdf-technological {{ background: rgba(41,128,185,0.12); color:
+.pest-pdf-code {{ /* Meaning: .pest-pdf-code style area; Settings: Adjust related properties within this block */
+  display: block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  font-size: 1.5rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 800; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  margin-bottom: 4px; /* Meaning: margin-bottom style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-pdf-code */
+.pest-pdf-label-text {{ /* Meaning: .pest-pdf-label-text style area; Settings: Adjust related properties within this block */
+  display: block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  font-size: 0.75rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  letter-spacing: 0.02em; /* Meaning: word spacing; settings: adjust values/colors/variables as needed */
+}} /* Finish .pest-pdf-label-text */
+.pest-pdf-item-row td {{ /* Meaning: .pest-pdf-item-row td style area; Settings: Adjust related properties within this block */
+  padding: 10px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border: 1px solid
+  vertical-align: top; /* Meaning: vertical-align style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-pdf-item-row td */
+.pest-pdf-item-row.pest-pdf-political td {{ background: rgba(142,68,173,0.03); }} /* Meaning: .pest-pdf-item-row.pest-pdf-political td background style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-item-row.pest-pdf-economic td {{ background: rgba(22,160,133,0.03); }} /* Meaning: .pest-pdf-item-row.pest-pdf-economic td background style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-item-row.pest-pdf-social td {{ background: rgba(232,67,147,0.03); }} /* Meaning: .pest-pdf-item-row.pest-pdf-social td background style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-item-row.pest-pdf-technological td {{ background: rgba(41,128,185,0.03); }} /* Meaning: .pest-pdf-item-row.pest-pdf-technological td background style attribute; setting: adjust value/color/variable as needed */
+.pest-pdf-item-num {{ /* Meaning: .pest-pdf-item-num style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color:
+}} /* Finish .pest-pdf-item-num */
+.pest-pdf-item-title {{ /* Meaning: .pest-pdf-item-title style area; Settings: Adjust related properties within this block */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color:
+}} /* Finish .pest-pdf-item-title */
+.pest-pdf-item-detail {{ /* Meaning: .pest-pdf-item-detail style area; Settings: Adjust related properties within this block */
+  color:
+  line-height: 1.5; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish .pest-pdf-item-detail */
+.pest-pdf-item-tags {{ /* Meaning: .pest-pdf-item-tags style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .pest-pdf-item-tags */
+.pest-pdf-tag {{ /* Meaning: .pest-pdf-tag style area; Settings: Adjust related properties within this block */
+  display: inline-block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  padding: 3px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 4px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  font-size: 0.75rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  background:
+  color:
+  margin: 2px; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .pest-pdf-tag */
+.pest-pdf-empty {{ /* Meaning: .pest-pdf-empty style area; Settings: Adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  color:
+  font-style: italic; /* Meaning: font-style style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .pest-pdf-empty */
+
+/* PEST paging control in print mode */
+@media print {{ /* Meaning: Print mode style; Settings: Adjust related attributes in this block */
+  .pest-card {{ /* Meaning: PEST card container; Settings: Adjust related properties within this block */
+    break-inside: auto; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: auto; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-card */
+  .pest-card__head {{ /* Meaning: .pest-card__head style area; Settings: Adjust related attributes within this block */
+    break-after: avoid; /* Meaning: break-after style attribute; setting: adjust value/color/variable as needed */
+    page-break-after: avoid; /* Meaning: page-break-after style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-card__head */
+  .pest-pdf-dimension {{ /* Meaning: .pest-pdf-dimension style area; Settings: Adjust related properties within this block */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-pdf-dimension */
+  .pest-strip {{ /* Meaning: PEST strip; Settings: Adjust related properties within this block */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-strip */
+}} /* Finish @media print */
+.callout {{ /* Meaning: Highlight prompt box - PDF basic style; Settings: Adjust related properties in this block */
+  padding: 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 8px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  margin: 20px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  background: rgba(0,0,0,0.02); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border-left: none; /* Meaning: Remove the left color bar; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .callout */
+.callout.tone-warning {{ border-color:
+.callout.tone-success {{ border-color:
+.callout.tone-danger {{ border-color:
+/* ==================== Callout Liquid glass effect - screen only ==================== */
+@media screen {{
+  .callout {{ /* Meaning: Highlight prompt box liquid glass - transparent suspension design; Settings: Adjust related attributes in this block */
+    --callout-accent: var(--primary-color); /* Meaning: main color of callout; setting: adjust the value as needed/color/variable */
+    --callout-glow-color: rgba(0, 123, 255, 0.35); /* Meaning: callout luminous color; setting: adjust the value as needed/color/variable */
+    position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+    margin: 24px 0; /* Meaning: Increase margins to enhance the sense of suspension; Settings: Adjust the value as needed/color/variable */
+    padding: 20px 24px; /* Meaning: padding; settings: adjust values/colors/variables as needed */
+    border: none; /* Meaning: Remove the default border; Settings: Adjust values/colors/variables as needed */
+    border-radius: 24px; /* Meaning: Large rounded corners enhance the liquid feel; Settings: Adjust values/colors/variables as needed */
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%); /* Meaning: Very light transparent gradient; Settings: Adjust values/colors/variables as needed */
+    backdrop-filter: blur(28px) saturate(200%); /* Meaning: Strong background blur to achieve glass perspective; Settings: Adjust the value as needed/color/variable */
+    -webkit-backdrop-filter: blur(28px) saturate(200%); /* Meaning: Safari background blur; Settings: Adjust the value as needed/color/variable */
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1.5px rgba(255, 255, 255, 0.18),
+      inset 0 2px 6px rgba(255, 255, 255, 0.12); /* Meaning: Multiple layers of shadows create a sense of suspension; Settings: Adjust values/colors/variables as needed */
+    transform: translateY(0); /* Meaning: initial position; setting: adjust value/color/variable as needed */
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease; /* Meaning: elastic transition animation; settings: adjust values/colors/variables as needed */
+    overflow: hidden; /* Meaning: Hide overflow content; Settings: Adjust values/colors/variables as needed */
+    isolation: isolate; /* Meaning: Create a cascading context; Settings: Adjust values/colors/variables as needed */
+  }} /* End .callout Liquid Glass Basics */
+  .callout:hover {{ /* Meaning: Enhance the floating effect when hovering; Settings: Adjust related attributes in this block */
+    transform: translateY(-4px); /* Meaning: floating effect; setting: adjust value/color/variable as needed */
+    box-shadow:
+      0 20px 56px rgba(0, 0, 0, 0.12),
+      0 8px 20px rgba(0, 0, 0, 0.06),
+      inset 0 0 0 1.5px rgba(255, 255, 255, 0.22),
+      inset 0 3px 8px rgba(255, 255, 255, 0.15); /* Meaning: Enhance shadows; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .callout:hover */
+  .callout::after {{ /* Meaning: Top arc-shaped highlight reflection; Settings: Adjust related properties in this block */
+    content: ''; /* Meaning: Pseudo element content; Settings: Adjust values/colors/variables as needed */
+    position: absolute; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+    top: 0; /* Meaning: Top position; Settings: Adjust values/colors/variables as needed */
+    left: 0; /* Meaning: left position; setting: adjust value/color/variable as needed */
+    right: 0; /* Meaning: right position; setting: adjust value/color/variable as needed */
+    height: 55%; /* Meaning: Cover the upper half; Settings: Adjust values/colors/variables as needed */
+    background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 60%, transparent 100%); /* Meaning: top highlight gradient; settings: adjust value/color/variable as needed */
+    border-radius: 24px 24px 0 0; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+    pointer-events: none; /* Meaning: Does not respond to the mouse; Settings: Adjust values/colors/variables as needed */
+    z-index: -1; /* Meaning: placed below the content; settings: adjust values/colors/variables as needed */
+  }} /* Finish .callout::after */
+  /* Callout tone Variants - glow in different colors */
+  .callout.tone-info {{ /* Meaning: Info type callout; Settings: Adjust related properties within this block */
+    --callout-accent:
+    --callout-glow-color: rgba(59, 130, 246, 0.4); /* Meaning: Info blue glow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .callout.tone-info */
+  .callout.tone-warning {{ /* Meaning: Warnings type callout; Settings: Adjust related attributes in this block */
+    --callout-accent:
+    --callout-glow-color: rgba(245, 158, 11, 0.4); /* Meaning: Warnings glow orange; Settings: Adjust the value as needed/color/variable */
+  }} /* Finish .callout.tone-warning */
+  .callout.tone-success {{ /* Meaning: Success type callout; Setting: Adjust related properties within this block */
+    --callout-accent:
+    --callout-glow-color: rgba(16, 185, 129, 0.4); /* Meaning: Success glows green; Settings: Adjust the value as needed/color/variable */
+  }} /* Finish .callout.tone-success */
+  .callout.tone-danger {{ /* Meaning: Danger type callout; Setting: Adjust related attributes in this block */
+    --callout-accent:
+    --callout-glow-color: rgba(239, 68, 68, 0.4); /* Meaning: Dangerous red glow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .callout.tone-danger */
+  /* Darkmode callout liquid glass */
+  .dark-mode .callout {{ /* Meaning: Dark mode callout liquid glass; Settings: Adjust related attributes in this block */
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%); /* Meaning: Dark transparent gradient; Settings: Adjust values/colors/variables as needed */
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.35),
+      0 4px 12px rgba(0, 0, 0, 0.18),
+      inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
+      inset 0 2px 6px rgba(255, 255, 255, 0.04); /* Meaning: Dark shadow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode .callout */
+  .dark-mode .callout:hover {{ /* Meaning: Dark hover effect; Settings: Adjust related attributes within this block */
+    box-shadow:
+      0 24px 64px rgba(0, 0, 0, 0.45),
+      0 10px 28px rgba(0, 0, 0, 0.22),
+      inset 0 0 0 1.5px rgba(255, 255, 255, 0.12),
+      inset 0 3px 8px rgba(255, 255, 255, 0.06); /* Meaning: Dark enhanced shadow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode .callout:hover */
+  .dark-mode .callout::after {{ /* Meaning: Dark top highlight; Settings: Adjust related attributes in this block */
+    background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 50%, transparent 100%); /* Meaning: Dark highlight; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode .callout::after */
+  /* DarkMode glow color enhancement */
+  .dark-mode .callout.tone-info {{ /* Meaning: DarkInfo type; Settings: Adjust related properties within this block */
+    --callout-glow-color: rgba(96, 165, 250, 0.5); /* Meaning: DarkInfo glows; Settings: Adjust the value as needed/color/variable */
+  }} /* Finish .dark-mode .callout.tone-info */
+  .dark-mode .callout.tone-warning {{ /* Meaning: DarkWarnings type; Settings: Adjust related properties within this block */
+    --callout-glow-color: rgba(251, 191, 36, 0.5); /* Meaning: DarkWarnings glow; Settings: Adjust the value as needed/color/variable */
+  }} /* Finish .dark-mode .callout.tone-warning */
+  .dark-mode .callout.tone-success {{ /* Meaning: DarkSuccess type; Settings: Adjust related properties within this block */
+    --callout-glow-color: rgba(52, 211, 153, 0.5); /* Meaning: DarkSuccess glow; Setting: Adjust the value as needed/color/variable */
+  }} /* Finish .dark-mode .callout.tone-success */
+  .dark-mode .callout.tone-danger {{ /* Meaning: Dark danger type; Settings: Adjust related attributes in this block */
+    --callout-glow-color: rgba(248, 113, 113, 0.5); /* Meaning: Dark dangerous glow; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .dark-mode .callout.tone-danger */
+}} /* Finish @media screen callout liquid glass */
+.kpi-grid {{ /* Meaning: KPI grid container; Settings: Adjust related properties within this block */
+  display: grid; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Meaning: Grid column template; Settings: Adjust values/colors/variables as needed */
+  gap: 16px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  margin: 20px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .kpi-grid */
+.kpi-card {{ /* Meaning: KPI card; Settings: Adjust related attributes in this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-direction: column; /* Meaning: flex spindle direction; setting: adjust value/color/variable as needed */
+  gap: 8px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  padding: 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: rgba(0,0,0,0.02); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  border: 1px solid var(--border-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  align-items: flex-start; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+}} /* Finish .kpi-card */
+.kpi-value {{ /* Meaning: .kpi-value style area; Settings: Adjust related attributes within this block */
+  font-size: 2rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-wrap: nowrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  gap: 4px 6px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  line-height: 1.25; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+  word-break: break-word; /* Meaning: Word line breaking rules; Settings: Adjust values/colors/variables as needed */
+  overflow-wrap: break-word; /* Meaning: Line wrapping of long words; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .kpi-value */
+.kpi-value small {{ /* Meaning: .kpi-value small style area; Settings: Adjust related attributes within this block */
+  font-size: 0.65em; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  align-self: baseline; /* Meaning: align-self style attribute; setting: adjust value/color/variable as needed */
+  white-space: nowrap; /* Meaning: Blank and line break strategy; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .kpi-value small */
+.kpi-label {{ /* Meaning: .kpi-label style area; Settings: Adjust related attributes in this block */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.35; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+  word-break: break-word; /* Meaning: Word line breaking rules; Settings: Adjust values/colors/variables as needed */
+  overflow-wrap: break-word; /* Meaning: Line wrapping of long words; Settings: Adjust values/colors/variables as needed */
+  max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+}} /* Finish .kpi-label */
+.delta.up {{ color:
+.delta.down {{ color:
+.delta.neutral {{ color: var(--secondary-color); }} /* Meaning: .delta.neutral color style attribute; setting: adjust value/color/variable as needed */
+.delta {{ /* Meaning: .delta style area; settings: adjust related properties within this block */
+  display: block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.3; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+  word-break: break-word; /* Meaning: Word line breaking rules; Settings: Adjust values/colors/variables as needed */
+  overflow-wrap: break-word; /* Meaning: Line wrapping of long words; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .delta */
+.chart-card {{ /* Meaning: Chart card container; Settings: Adjust related properties within this block */
+  margin: 30px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  padding: 20px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border: 1px solid var(--border-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  background: rgba(0,0,0,0.01); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+}} /* Finish .chart-card */
+.chart-card.chart-card--error {{ /* Meaning: .chart-card.chart-card--error style area; Settings: Adjust related properties within this block */
+  border-style: dashed; /* Meaning: border-style style attribute; setting: adjust value/color/variable as needed */
+  background: linear-gradient(135deg, rgba(0,0,0,0.015), rgba(0,0,0,0.04)); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+}} /* Finish .chart-card.chart-card--error */
+.chart-error {{ /* Meaning: .chart-error style area; Settings: Adjust related properties within this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  gap: 12px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  padding: 14px 12px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 10px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  align-items: flex-start; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  background: rgba(0,0,0,0.03); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-error */
+.chart-error__icon {{ /* Meaning: .chart-error__icon style area; Settings: Adjust related attributes within this block */
+  width: 28px; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  height: 28px; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  flex-shrink: 0; /* Meaning: flex-shrink style attribute; setting: adjust value/color/variable as needed */
+  border-radius: 50%; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  justify-content: center; /* Meaning: flex spindle alignment; settings: adjust values/colors/variables as needed */
+  font-weight: 700; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--secondary-color-dark); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  background: rgba(0,0,0,0.06); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  font-size: 0.9rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .chart-error__icon */
+.chart-error__title {{ /* Meaning: .chart-error__title style area; Settings: Adjust related attributes in this block */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  color: var(--text-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-error__title */
+.chart-error__desc {{ /* Meaning: .chart-error__desc style area; Settings: Adjust related attributes within this block */
+  margin: 4px 0 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  line-height: 1.6; /* Meaning: line height, improve readability; settings: adjust values/colors/variables as needed */
+}} /* Finish .chart-error__desc */
+.chart-card.wordcloud-card .chart-container {{ /* Meaning: .chart-card.wordcloud-card .chart-container style area; Settings: Adjust related properties within this block */
+  min-height: 180px; /* Meaning: Minimum height to prevent collapse; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-card.wordcloud-card .chart-container */
+.chart-container {{ /* Meaning: Chart canvas container; Settings: Adjust related properties within this block */
+  position: relative; /* Meaning: Positioning method; Settings: Adjust values/colors/variables as needed */
+  min-height: 220px; /* Meaning: Minimum height to prevent collapse; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-container */
+.chart-degraded {{ /* Meaning: Chart summary table; Settings: Adjust related attributes in this block */
+  display: none; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  margin-top: 12px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  font-size: 0.85rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  overflow-x: auto; /* Meaning: Horizontal overflow processing; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-degraded */
+.no-js .chart-degraded {{ /* Meaning: .no-js .chart-degraded style area; Settings: Adjust related properties within this block */
+  display: block; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .no-js .chart-degraded */
+.no-js .chart-container {{ /* Meaning: .no-js .chart-container style area; Settings: Adjust related properties within this block */
+  display: none; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .no-js .chart-container */
+.chart-degraded table {{ /* Meaning: .chart-degraded table style area; Settings: Adjust related attributes within this block */
+  width: 100%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  border-collapse: collapse; /* Meaning: border-collapse style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .chart-degraded table */
+.chart-degraded th,
+.chart-degraded td {{ /* Meaning: .chart-degraded td style area; Settings: Adjust related attributes within this block */
+  border: 1px solid var(--border-color); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  padding: 6px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  text-align: left; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-degraded td */
+.chart-degraded th {{ /* Meaning: .chart-degraded th style area; Settings: Adjust related attributes within this block */
+  background: rgba(0,0,0,0.04); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+}} /* Finish .chart-degraded th */
+.wordcloud-degraded .wordcloud-badges {{ /* Meaning: .wordcloud-degraded .wordcloud-badges style area; Settings: Adjust related attributes in this block */
+  display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+  gap: 6px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  margin-top: 6px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+}} /* Finish .wordcloud-degraded .wordcloud-badges */
+.wordcloud-badge {{ /* Meaning: Word Cloud Badge; Settings: Adjust related attributes within this block */
+  display: inline-flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  align-items: center; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  gap: 4px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+  padding: 4px 8px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 999px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  border: 1px solid rgba(74, 144, 226, 0.35); /* Meaning: border style; settings: adjust values/colors/variables as needed */
+  color: var(--text-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.14) 0%, rgba(74, 144, 226, 0.24) 100%); /* Meaning: background color or gradient effect; settings: adjust values/colors/variables as needed */
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .wordcloud-badge */
+.dark-mode .wordcloud-badge {{ /* Single/Double */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35); /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .dark-mode .wordcloud-badge */
+.wordcloud-badge small {{ /* Meaning: .wordcloud-badge small style area; Settings: Adjust related properties within this block */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+  font-weight: 600; /* Meaning: font weight; settings: adjust values/colors/variables as needed */
+  font-size: 0.75rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+}} /* Finish .wordcloud-badge small */
+.chart-note {{ /* Meaning: Chart degradation prompt; Settings: Adjust related properties in this block */
+  margin-top: 8px; /* Meaning: margin-top style attribute; setting: adjust value/color/variable as needed */
+  font-size: 0.85rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  color: var(--secondary-color); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .chart-note */
+figure {{ /* Meaning: figure style area; settings: adjust related attributes within this block */
+  margin: 20px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+}} /* Finish figure */
+figure img {{ /* Meaning: figure img style area; settings: adjust related attributes within this block */
+  max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+}} /* Finish figure img */
+.math-block {{ /* Meaning: block-level formula; settings: adjust related properties within this block */
+  text-align: center; /* Meaning: Text alignment; Settings: Adjust values/colors/variables as needed */
+  font-size: 1.1rem; /* Meaning: font size; setting: adjust value/color/variable as needed */
+  margin: 24px 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .math-block */
+.math-inline {{ /* Meaning: Inline formula; Settings: Adjust related properties within this block */
+  font-family: {heading_font}; /* Meaning: font family; settings: adjust values/colors/variables as needed */
+  font-style: italic; /* Meaning: font-style style attribute; setting: adjust value/color/variable as needed */
+  white-space: nowrap; /* Meaning: Blank and line break strategy; Settings: Adjust values/colors/variables as needed */
+  padding: 0 0.15em; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+}} /* Finish .math-inline */
+pre.code-block {{ /* Meaning: code block; settings: adjust related properties within this block */
+  background:
+  color:
+  padding: 16px; /* Meaning: Padding, controls the distance between the content and the edge of the container; Settings: Adjust the value as needed/color/variable */
+  border-radius: 12px; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  overflow-x: auto; /* Meaning: Horizontal overflow processing; Settings: Adjust values/colors/variables as needed */
+}} /* Finish pre.code-block */
+@media (max-width: 768px) {{ /* Meaning: Mobile terminal breakpoint style; Settings: Adjust related properties within this block */
+  .report-header {{ /* Meaning: Header ceiling area; Settings: Adjust related attributes in this block */
+    flex-direction: column; /* Meaning: flex spindle direction; setting: adjust value/color/variable as needed */
+    align-items: flex-start; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  }} /* Finish .report-header */
+  main {{ /* Meaning: Main content container; Settings: Adjust related properties within this block */
+    margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+    border-radius: 0; /* Meaning: rounded corners; settings: adjust values/colors/variables as needed */
+  }} /* Finish main */
+}} /* Finish @media (max-width: 768px) */
+@media print {{ /* Meaning: Print mode style; Settings: Adjust related attributes in this block */
+  .no-print {{ display: none !important; }} /* Meaning: .no-print display style attribute; setting: adjust value/color/variable as needed */
+  body {{ /* Meaning: Global layout and background settings; Settings: Adjust related attributes within this block */
+    background:
+  }} /* Finish body */
+  main {{ /* Meaning: Main content container; Settings: Adjust related properties within this block */
+    box-shadow: none; /* Meaning: Shadow effect; Settings: Adjust values/colors/variables as needed */
+    margin: 0; /* Meaning: Margin, controls the distance from surrounding elements; Settings: Adjust the value as needed/color/variable */
+    max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  }} /* Finish main */
+  .chapter > *,
+  .hero-section,
+  .callout,
+  .engine-quote,
+  .chart-card,
+  .kpi-grid,
+.swot-card,
+.pest-card,
+.table-wrap,
+figure,
+blockquote {{ /* Meaning: Quote block; Settings: Adjust related properties within this block */
+  break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+    max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  }} /* Finish blockquote */
+  .chapter h2,
+  .chapter h3,
+  .chapter h4 {{ /* Meaning: .chapter h4 style area; settings: adjust related properties within this block */
+    break-after: avoid; /* Meaning: break-after style attribute; setting: adjust value/color/variable as needed */
+    page-break-after: avoid; /* Meaning: page-break-after style attribute; setting: adjust value/color/variable as needed */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .chapter h4 */
+  .chart-card,
+  .table-wrap {{ /* Meaning: table scrolling container; settings: adjust related properties within this block */
+    overflow: visible !important; /* Meaning: Overflow processing; Settings: Adjust values/colors/variables as needed */
+    max-width: 100% !important; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+    box-sizing: border-box; /* Meaning: Size calculation method; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .table-wrap */
+  .chart-card canvas {{ /* Meaning: .chart-card canvas style area; Settings: Adjust related properties within this block */
+    width: 100% !important; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+    height: auto !important; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+    max-width: 100% !important; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  }} /* Finish .chart-card canvas */
+  .swot-card,
+  .swot-cell {{ /* Meaning: SWOT quadrant cell; Settings: Adjust related properties within this block */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-cell */
+  .swot-card {{ /* Meaning: SWOT card container; Settings: Adjust related properties within this block */
+    color: var(--swot-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+    /* Allow pagination within the card to prevent the entire card from being moved to the next page */
+    break-inside: auto !important; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: auto !important; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-card */
+  .swot-card__head {{ /* Meaning: .swot-card__head style area; Settings: Adjust related attributes within this block */
+    break-after: avoid; /* Meaning: break-after style attribute; setting: adjust value/color/variable as needed */
+    page-break-after: avoid; /* Meaning: page-break-after style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-card__head */
+  .swot-grid {{ /* Meaning: SWOT quadrant grid; Settings: Adjust related properties within this block */
+    break-before: avoid; /* Meaning: break-before style attribute; setting: adjust value/color/variable as needed */
+    page-break-before: avoid; /* Meaning: page-break-before style attribute; setting: adjust value/color/variable as needed */
+    break-inside: auto; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: auto; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+    display: flex; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+    flex-wrap: wrap; /* Meaning: line wrapping strategy; settings: adjust values/colors/variables as needed */
+    gap: 10px; /* Meaning: sub-element spacing; setting: adjust value/color/variable as needed */
+    align-items: stretch; /* Meaning: flex alignment (cross axis); setting: adjust the value as needed/color/variable */
+  }} /* Finish .swot-grid */
+  .swot-grid .swot-cell {{ /* Meaning: .swot-grid .swot-cell style area; Settings: Adjust related attributes in this block */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-grid .swot-cell */
+  .swot-legend {{ /* Meaning: .swot-legend style area; Settings: Adjust related attributes within this block */
+    display: none !important; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .swot-legend */
+  .swot-grid .swot-cell {{ /* Meaning: .swot-grid .swot-cell style area; Settings: Adjust related attributes in this block */
+    flex: 1 1 320px; /* Meaning: flex space ratio; setting: adjust value/color/variable as needed */
+    min-width: 240px; /* Meaning: minimum width; setting: adjust value/color/variable as needed */
+    height: auto; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+  }} /* Finish .swot-grid .swot-cell */
+  /* PEST print style */
+  .pest-card,
+  .pest-strip {{ /* Meaning: PEST strip; Settings: Adjust related properties within this block */
+    break-inside: avoid; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: avoid; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-strip */
+  .pest-card {{ /* Meaning: PEST card container; Settings: Adjust related properties within this block */
+    color: var(--pest-text); /* Meaning: Text color; Settings: Adjust values/colors/variables as needed */
+    break-inside: auto !important; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: auto !important; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-card */
+  .pest-card__head {{ /* Meaning: .pest-card__head style area; Settings: Adjust related attributes within this block */
+    break-after: avoid; /* Meaning: break-after style attribute; setting: adjust value/color/variable as needed */
+    page-break-after: avoid; /* Meaning: page-break-after style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-card__head */
+  .pest-strips {{ /* Meaning: PEST strip container; Settings: Adjust related properties within this block */
+    break-before: avoid; /* Meaning: break-before style attribute; setting: adjust value/color/variable as needed */
+    page-break-before: avoid; /* Meaning: page-break-before style attribute; setting: adjust value/color/variable as needed */
+    break-inside: auto; /* Meaning: break-inside style attribute; setting: adjust value/color/variable as needed */
+    page-break-inside: auto; /* Meaning: page-break-inside style attribute; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-strips */
+  .pest-legend {{ /* Meaning: .pest-legend style area; Settings: Adjust related properties within this block */
+    display: none !important; /* Meaning: Layout display method; Settings: Adjust values/colors/variables as needed */
+  }} /* Finish .pest-legend */
+  .pest-strip {{ /* Meaning: PEST strip; Settings: Adjust related properties within this block */
+    flex-direction: row; /* Meaning: flex spindle direction; setting: adjust value/color/variable as needed */
+  }} /* Finish .pest-strip */
+.table-wrap {{ /* Meaning: table scrolling container; settings: adjust related properties within this block */
+  overflow-x: auto; /* Meaning: Horizontal overflow processing; Settings: Adjust values/colors/variables as needed */
+  max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+}} /* Finish .table-wrap */
+.table-wrap table {{ /* Meaning: .table-wrap table style area; Settings: Adjust related properties within this block */
+  table-layout: fixed; /* Meaning: table layout algorithm; settings: adjust values/colors/variables as needed */
+  width: 100%; /* Meaning: Width setting; Setting: Adjust value/color/variable as needed */
+  max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+}} /* Finish .table-wrap table */
+.table-wrap table th,
+.table-wrap table td {{ /* Meaning: .table-wrap table td style area; Settings: Adjust related attributes within this block */
+  word-break: break-word; /* Meaning: Word line breaking rules; Settings: Adjust values/colors/variables as needed */
+  overflow-wrap: break-word; /* Meaning: Line wrapping of long words; Settings: Adjust values/colors/variables as needed */
+}} /* Finish .table-wrap table td */
+/* Prevent pictures and charts from overflowing */
+img, canvas, svg {{ /* Meaning: Media element size limit; Settings: Adjust related attributes within this block */
+  max-width: 100% !important; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+  height: auto !important; /* Meaning: height setting; setting: adjust value/color/variable as needed */
+}} /* Finish img, canvas, svg */
+/* Make sure the All container does not exceed the page width */
+* {{ /* meaning：* Style area; Settings: Adjust related properties within this block */
+  box-sizing: border-box; /* Meaning: Size calculation method; Settings: Adjust values/colors/variables as needed */
+  max-width: 100%; /* Meaning: maximum width; setting: adjust value/color/variable as needed */
+}} /* Finish * */
+}} /* Finish @media print */
