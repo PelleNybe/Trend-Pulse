@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Pulse - Predictive Oracle Paths</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        :root {
+            --bg-base: #020205;
+            --bg-panel: rgba(10, 10, 20, 0.85);
+            --neon-cyan: #0df2f2;
+            --neon-magenta: #f20dcf;
+            --neon-green: #33f20d;
+            --text-primary: #ffffff;
+            --text-muted: #8888aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(13, 242, 242, 0.2);
+            background: linear-gradient(180deg, rgba(0,0,0,0.8), transparent);
+            z-index: 10;
+        }
+
+        h1 {
+            color: var(--neon-cyan);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-return {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-return:hover { color: var(--neon-cyan); }
+
+        .container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        /* Timeline Area */
+        .timeline-area {
+            flex: 3;
+            position: relative;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            overflow: hidden;
+        }
+
+        #d3-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* SVG Styles */
+        .link {
+            fill: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .link:hover {
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        .node circle {
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .node:hover circle {
+            r: 12;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        .node text {
+            font-family: 'Space Grotesk', sans-serif;
+            fill: var(--text-primary);
+            font-size: 12px;
+            pointer-events: none;
+        }
+        .node-prob {
+            fill: var(--text-muted);
+            font-size: 10px;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            flex: 1;
+            min-width: 350px;
+            background: var(--bg-panel);
+            border-left: 1px solid rgba(13, 242, 242, 0.3);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 20;
+        }
+
+        .side-panel.active {
+            transform: translateX(0);
+        }
+
+        .panel-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .panel-title {
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .prob-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .data-row {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+        .data-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+        }
+        .data-value {
+            font-size: 1.2rem;
+            font-family: monospace;
+        }
+
+        .btn-simulate {
+            margin-top: auto;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(13, 242, 242, 0.2);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: bold;
+        }
+
+        .btn-simulate:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* Overlay indicator */
+        .time-marker {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, var(--neon-green), transparent);
+            box-shadow: 0 0 15px var(--neon-green);
+            pointer-events: none;
+        }
+        .time-label {
+            position: absolute;
+            left: 110px;
+            top: 20px;
+            color: var(--neon-green);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Oracle Time Paths</h1>
+        <a href="/" class="nav-return">&larr; Return</a>
+    </header>
+
+    <div class="container">
+        <div class="timeline-area">
+            <div class="time-marker"></div>
+            <div class="time-label">PRESENT</div>
+            <div id="d3-container"></div>
+        </div>
+
+        <div class="side-panel" id="side-panel" aria-live="polite" aria-atomic="true">
+            <button class="panel-close" data-action="closePanel" aria-label="Close panel">×</button>
+            <h2 class="panel-title" id="sp-title">Scenario Name</h2>
+            <div class="prob-badge" id="sp-badge">85% Probability</div>
+
+            <div class="data-row">
+                <div class="data-label">Market Impact Trigger</div>
+                <div class="data-value" id="sp-trigger">Fed Rate Cut 50bps</div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">Projected SPY Move</div>
+                <div class="data-value" id="sp-spy" style="color: var(--neon-green);">+3.2%</div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">Risk Vectors</div>
+                <div class="data-value" id="sp-risk" style="font-size: 1rem;">Inflation rebound, Bond yield spike</div>
+            </div>
+
+            <button class="btn-simulate" id="btnSimulateScenario" aria-label="Simulate Portfolio">Simulate Portfolio</button>
+            <div id="simulation-result" class="data-row" style="margin-top: 1rem; display: none; font-size: 0.9rem; line-height: 1.5;"></div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('d3-container');
+        const width = container.clientWidth || 900;
+        const height = container.clientHeight || 600;
+        const margin = {top: 50, right: 150, bottom: 50, left: 100};
+
+        const svg = d3.select("#d3-container").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        let selectedScenario = null;
+
+        function getNodeTier(dData) {
+            if (dData.type === 'root') return 'root';
+            if (dData.node_tier) return dData.node_tier;
+            if (dData.type === 'high' || dData.type === 'bull') return 'high';
+            if (dData.type === 'low' || dData.type === 'bear') return 'low';
+            return 'med';
+        }
+
+        function renderOracleTree(treeData) {
+            svg.selectAll("*").remove();
+            const root = d3.hierarchy(treeData);
+            const treeLayout = d3.tree().size([height - margin.top - margin.bottom, width - margin.left - margin.right - 200]);
+            treeLayout(root);
+
+            const lineGenerator = d3.linkHorizontal()
+                .x(d => d.y)
+                .y(d => d.x);
+
+            svg.selectAll(".link")
+                .data(root.links())
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", lineGenerator)
+                .attr("stroke", d => {
+                    const tier = getNodeTier(d.target.data);
+                    if(tier === 'high') return "var(--neon-cyan)";
+                    if(tier === 'low') return "var(--neon-magenta)";
+                    return "var(--text-muted)";
+                })
+                .attr("stroke-width", d => {
+                    const tier = getNodeTier(d.target.data);
+                    if(tier === 'high') return 4;
+                    if(tier === 'low') return 1.5;
+                    return 2;
+                })
+                .attr("stroke-dasharray", d => getNodeTier(d.target.data) === 'low' ? "5,5" : "none")
+                .attr("opacity", 0)
+                .transition()
+                .duration(700)
+                .delay(d => d.source.depth * 300)
+                .attr("opacity", 1);
+
+            const nodes = svg.selectAll(".node")
+                .data(root.descendants())
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.y},${d.x})`)
+                .attr("opacity", 0)
+                .on("click", (event, d) => showPanel(d.data));
+
+            nodes.transition()
+                .duration(400)
+                .delay(d => d.depth * 300 + 250)
+                .attr("opacity", 1);
+
+            nodes.append("circle")
+                .attr("r", d => getNodeTier(d.data) === 'root' ? 12 : 8)
+                .attr("fill", d => {
+                    const tier = getNodeTier(d.data);
+                    if(tier === 'root') return "var(--neon-green)";
+                    if(tier === 'high') return "var(--neon-cyan)";
+                    if(tier === 'low') return "var(--neon-magenta)";
+                    return "var(--text-muted)";
+                })
+                .style("filter", "drop-shadow(0 0 5px currentColor)");
+
+            nodes.append("text")
+                .attr("dy", -15)
+                .attr("x", d => d.children ? -10 : 15)
+                .style("text-anchor", d => d.children ? "end" : "start")
+                .text(d => d.data.name);
+
+            nodes.append("text")
+                .attr("class", "node-prob")
+                .attr("dy", 20)
+                .attr("x", d => d.children ? -10 : 15)
+                .style("text-anchor", d => d.children ? "end" : "start")
+                .text(d => {
+                    const p = d.data.probability ?? d.data.prob;
+                    return p !== undefined ? `${p}% Prob` : "";
+                });
+        }
+
+        // Fetch live Oracle paths from backend
+        fetch('/api/oracle/paths')
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.treeData) {
+                    renderOracleTree(data.treeData);
+                }
+            })
+            .catch(err => console.error("Failed to load Oracle paths:", err));
+
+        // UI Logic
+        const panel = document.getElementById('side-panel');
+
+        function showPanel(data) {
+            if(getNodeTier(data) === 'root') return;
+            selectedScenario = data;
+            const prob = data.probability ?? data.prob ?? 50;
+            const tier = getNodeTier(data);
+            const spyMove = data.spy || 'N/A';
+            const riskText = data.risk || (Array.isArray(data.risks) ? data.risks.join(', ') : 'Market Volatility');
+
+            document.getElementById('sp-title').textContent = data.name;
+
+            const badge = document.getElementById('sp-badge');
+            badge.textContent = `${prob}% Probability`;
+            badge.style.border = `1px solid ${tier === 'high' ? 'var(--neon-cyan)' : tier === 'low' ? 'var(--neon-magenta)' : 'var(--text-muted)'}`;
+            badge.style.color = tier === 'high' ? 'var(--neon-cyan)' : tier === 'low' ? 'var(--neon-magenta)' : 'var(--text-muted)';
+            badge.style.boxShadow = `0 0 10px ${badge.style.color}`;
+
+            document.getElementById('sp-trigger').textContent = data.desc || data.name;
+
+            const spyEl = document.getElementById('sp-spy');
+            spyEl.textContent = spyMove;
+            spyEl.style.color = String(spyMove).includes('-') ? 'var(--neon-magenta)' : 'var(--neon-green)';
+
+            document.getElementById('sp-risk').textContent = riskText;
+
+            const simRes = document.getElementById('simulation-result');
+            if (simRes) simRes.style.display = 'none';
+
+            panel.classList.add('active');
+        }
+
+        document.getElementById('btnSimulateScenario').addEventListener('click', async () => {
+            const simRes = document.getElementById('simulation-result');
+            const btn = document.getElementById('btnSimulateScenario');
+            if (!selectedScenario || !simRes) return;
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+            btn.textContent = 'Running Backtest...';
+            try {
+                const resp = await fetch('/api/oracle/simulate', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        scenario: selectedScenario.name,
+                        probability: selectedScenario.probability ?? selectedScenario.prob ?? 50
+                    })
+                });
+                const payload = await resp.json();
+                simRes.style.display = 'block';
+                if (payload.success && payload.metrics) {
+                    const m = payload.metrics;
+                    simRes.textContent = `SPY 6M Backtest — Final: $${Number(m.final_value).toLocaleString(undefined, {maximumFractionDigits: 0})} | Return: ${(m.total_return * 100).toFixed(2)}% | Sharpe: ${m.sharpe_ratio.toFixed(2)} | Max DD: ${(m.max_drawdown * 100).toFixed(2)}%`;
+                } else {
+                    simRes.textContent = payload.message || 'Backtest unavailable';
+                }
+            } catch (err) {
+                simRes.style.display = 'block';
+                simRes.textContent = `Simulation error: ${err.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.setAttribute('aria-disabled', 'false');
+                btn.textContent = 'Simulate Portfolio';
+            }
+        });
+
+        function closePanel() {
+            panel.classList.remove('active');
+        }
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            // Preserve current layout without reload
+        });
+
+    </script>
+<script>
+        // Event delegation for actions
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('[data-action]');
+            if (target) {
+                const action = target.getAttribute('data-action');
+                if (typeof window[action] === 'function') {
+                    window[action]();
+                }
+            }
+        });
+</script>
+    <div style="position: fixed; bottom: 6px; left: 10px; font-size: 10px; opacity: 0.65; z-index: 1000;">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Sponsor</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market News Feed | Trend Pulse by Corax CoLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        body { background: #0a0a1a; color: #e0e0ff; font-family: 'Space Grotesk', sans-serif; margin: 0; padding: 20px; }
+        .glass-panel { background: rgba(10, 10, 25, 0.6); border: 1px solid rgba(0, 240, 255, 0.2); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        h1 { color: #00f0ff; text-align: center; }
+        .footer { text-align: center; margin-top: 40px; font-size: 0.9em; opacity: 0.7; }
+        a { color: #00f0ff; text-decoration: none; }
+        .btn-back { display: inline-block; padding: 8px 16px; border: 1px solid #00f0ff; color: #00f0ff; border-radius: 5px; margin-bottom: 20px; }
+        .btn-back:hover { background: rgba(0, 240, 255, 0.1); }
+        .news-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        .news-title { font-size: 1.2em; margin-bottom: 5px; }
+        .news-meta { font-size: 0.85em; color: #888; display: flex; gap: 15px; }
+        .sentiment-Positive { color: #00ffaa; }
+        .sentiment-Negative { color: #ff0055; }
+        .sentiment-Neutral { color: #ccc; }
+    </style>
+</head>
+<body>
+    <a href="/" class="btn-back" aria-label="Back to Nexus">← Back to Nexus</a>
+    <div class="glass-panel">
+        <h1>Market News Feed 📰</h1>
+        <p style="text-align: center;">Real-time RSS feeds with basic heuristic sentiment.</p>
+        <div id="loading" aria-live="polite" aria-busy="true" style="text-align: center; color: #00f0ff;">Fetching latest global news...</div>
+
+        <div id="newsList"></div>
+    </div>
+
+    <div class="footer">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer">Sponsor</a>
+    </div>
+
+    <script>
+        fetch('/api/news_data')
+            .then(r => r.json())
+            .then(data => {
+                if(data.error) throw new Error(data.error);
+                document.getElementById('loading').style.display = 'none';
+                const list = document.getElementById('newsList');
+
+                data.news.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'news-item';
+
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'news-title';
+                    const link = document.createElement('a');
+                    link.href = item.link;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.textContent = item.title;
+                    titleDiv.appendChild(link);
+
+                    const metaDiv = document.createElement('div');
+                    metaDiv.className = 'news-meta';
+
+                    const sourceSpan = document.createElement('span');
+                    sourceSpan.textContent = item.source;
+                    const dateSpan = document.createElement('span');
+                    dateSpan.textContent = item.published;
+                    const sentSpan = document.createElement('span');
+                    sentSpan.className = `sentiment-${item.sentiment}`;
+                    sentSpan.textContent = `Sentiment: ${item.sentiment}`;
+
+                    metaDiv.appendChild(sourceSpan);
+                    metaDiv.appendChild(dateSpan);
+                    metaDiv.appendChild(sentSpan);
+
+                    div.appendChild(titleDiv);
+                    div.appendChild(metaDiv);
+                    list.appendChild(div);
+                });
+            })
+            .catch(err => {
+                document.getElementById('loading').textContent = 'Error loading news: ' + err.message;
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Large Machine Learning Models & Datasets
+MindSpider/datasets/
+MindSpider/models/
+
+# Development & Testing Files
+tests/
+logs/
+*.log
+
+# Large Assets (Optional SVGs/PDF Generation Fonts not needed for basic web API)
+ReportEngine/renderers/assets/fonts/SourceHanSerifSC-Medium.otf
+
+# Python Caches
+__pycache__/
+*.pyc
+
+# Local Configs
+.env

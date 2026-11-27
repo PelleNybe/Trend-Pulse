@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Radar | Trend Pulse by Corax CoLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        body { background: #0a0a1a; color: #e0e0ff; font-family: 'Space Grotesk', sans-serif; margin: 0; padding: 20px; }
+        .glass-panel { background: rgba(10, 10, 25, 0.6); border: 1px solid rgba(0, 240, 255, 0.2); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        h1 { color: #00f0ff; text-align: center; }
+        .footer { text-align: center; margin-top: 40px; font-size: 0.9em; opacity: 0.7; }
+        a { color: #00f0ff; text-decoration: none; }
+        .btn-back { display: inline-block; padding: 8px 16px; border: 1px solid #00f0ff; color: #00f0ff; border-radius: 5px; margin-bottom: 20px; }
+        .btn-back:hover { background: rgba(0, 240, 255, 0.1); }
+        .anomaly-card { background: rgba(255, 0, 85, 0.1); border: 1px solid #ff0055; padding: 15px; border-radius: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .anomaly-card.medium { background: rgba(255, 170, 0, 0.1); border-color: #ffaa00; }
+        .symbol-badge { font-size: 1.5em; font-weight: bold; }
+        .desc { color: #ccc; }
+
+        /* Enhanced Anomaly Radar UI */
+        .anomaly-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .anomaly-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+        }
+        .anomaly-card.medium:hover {
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.4);
+        }
+        h1 {
+            text-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+            letter-spacing: 1.5px;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="/" class="btn-back" aria-label="Back to Nexus">← Back to Nexus</a>
+    <div class="glass-panel">
+        <h1>Anomaly Radar 🚨</h1>
+        <p style="text-align: center;">Scanning major ETFs for recent volume spikes and price breakouts.</p>
+        <div id="loading" aria-live="polite" aria-busy="true" style="text-align: center; color: #00f0ff;">Scanning for anomalies...</div>
+
+        <div id="anomaliesList"></div>
+    </div>
+
+    <div class="footer">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer">Sponsor</a>
+    </div>
+
+    <script>
+        fetch('/api/anomaly_data')
+            .then(r => r.json())
+            .then(data => {
+                if(data.error) throw new Error(data.error);
+                document.getElementById('loading').style.display = 'none';
+                const list = document.getElementById('anomaliesList');
+
+                if (data.anomalies.length === 0) {
+                    const emptyDiv = document.createElement("div");
+                    emptyDiv.style.textAlign = "center";
+                    emptyDiv.style.padding = "20px";
+                    emptyDiv.style.color = "#00ffaa";
+                    emptyDiv.textContent = "No significant anomalies detected in the current session.";
+                    list.textContent = "";
+                    list.appendChild(emptyDiv);
+                    return;
+                }
+
+                data.anomalies.forEach(anom => {
+                    const card = document.createElement('div');
+                    card.className = `anomaly-card ${anom.severity.toLowerCase()}`;
+
+                    const left = document.createElement('div');
+                    const sym = document.createElement('div');
+                    sym.className = 'symbol-badge';
+                    sym.textContent = anom.symbol;
+                    const type = document.createElement('div');
+                    type.textContent = anom.type;
+                    type.style.color = anom.severity === 'High' ? '#ff0055' : '#ffaa00';
+                    left.appendChild(sym);
+                    left.appendChild(type);
+
+                    const right = document.createElement('div');
+                    right.className = 'desc';
+                    right.textContent = anom.description;
+
+                    card.appendChild(left);
+                    card.appendChild(right);
+                    list.appendChild(card);
+                });
+            })
+            .catch(err => {
+                document.getElementById('loading').textContent = 'Error loading data: ' + err.message;
+            });
+    </script>
+</body>
+</html>

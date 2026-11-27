@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trendpulse-config
+data:
+  DB_HOST: "db"
+  DB_PORT: "5432"
+  DB_USER: "trendpulse"
+  DB_NAME: "trendpulse"
+  DB_DIALECT: "postgresql"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  HOST: "0.0.0.0"
+  PORT: "5000"

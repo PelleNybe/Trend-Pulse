@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TA Matrix | Trend Pulse by Corax CoLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        body { background: #0a0a1a; color: #e0e0ff; font-family: 'Space Grotesk', sans-serif; margin: 0; padding: 20px; }
+        .glass-panel { background: rgba(10, 10, 25, 0.6); border: 1px solid rgba(0, 240, 255, 0.2); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        h1 { color: #00f0ff; text-align: center; }
+        .cyber-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .cyber-table th, .cyber-table td { padding: 12px; border: 1px solid rgba(0, 240, 255, 0.2); text-align: left; }
+        .cyber-table th { background: rgba(0, 240, 255, 0.1); color: #00f0ff; }
+        .positive { color: #00ffaa; }
+        .negative { color: #ff0055; }
+        .footer { text-align: center; margin-top: 40px; font-size: 0.9em; opacity: 0.7; }
+        a { color: #00f0ff; text-decoration: none; }
+        .btn-back { display: inline-block; padding: 8px 16px; border: 1px solid #00f0ff; color: #00f0ff; border-radius: 5px; margin-bottom: 20px; }
+        .btn-back:hover { background: rgba(0, 240, 255, 0.1); }
+
+        /* Enhanced TA Matrix Visuals */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(10, 10, 25, 0.8); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.5); border-radius: 4px; }
+
+        .cyber-table tbody tr { transition: background 0.2s ease, transform 0.2s ease; }
+        .cyber-table tbody tr:hover {
+            background: rgba(0, 240, 255, 0.05);
+            transform: scale(1.01);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1) inset;
+        }
+
+        h1 {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .cyber-table th {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        /* Sci-Fi Grid Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    <a href="/" class="btn-back">← Back to Nexus</a>
+    <div class="glass-panel">
+        <h1>Live TA Matrix</h1>
+        <p style="text-align: center;">Real-time Technical Analysis: RSI, MACD, and Bollinger Bands.</p>
+        <div id="loading" aria-live="polite" aria-busy="true" style="text-align: center; color: #00f0ff; padding: 20px;"><div class="search-spinner" style="border: 3px solid rgba(0, 240, 255, 0.3); border-top-color: #00f0ff; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: inline-block; margin-right: 10px; vertical-align: middle;"></div>Loading live data...</div>
+        <table class="cyber-table" id="taTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                    <th>Trend</th>
+                    <th>RSI (14)</th>
+                    <th>MACD</th>
+                    <th>Bollinger Upper</th>
+                    <th>Bollinger Lower</th>
+                </tr>
+            </thead>
+            <tbody id="taBody">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer">Corax CoLAB</a> |
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer">Sponsor</a>
+    </div>
+
+    <script>
+        fetch('/api/ta_matrix_data')
+            .then(r => r.json())
+            .then(data => {
+                if (data.error) throw new Error(data.error);
+                const tbody = document.getElementById('taBody');
+                for (const [symbol, stats] of Object.entries(data)) {
+                    const tr = document.createElement('tr');
+
+                    const tdSym = document.createElement('td');
+                    tdSym.textContent = symbol;
+                    tr.appendChild(tdSym);
+
+                    const tdPrice = document.createElement('td');
+                    tdPrice.textContent = stats.price.toFixed(2);
+                    tr.appendChild(tdPrice);
+
+                    const tdTrend = document.createElement('td');
+                    tdTrend.textContent = stats.trend;
+                    tdTrend.className = stats.trend === 'Bullish' ? 'positive' : 'negative';
+                    tr.appendChild(tdTrend);
+
+                    const tdRsi = document.createElement('td');
+                    tdRsi.textContent = stats.rsi.toFixed(2);
+                    tdRsi.className = stats.rsi > 70 ? 'negative' : (stats.rsi < 30 ? 'positive' : '');
+                    tr.appendChild(tdRsi);
+
+                    const tdMacd = document.createElement('td');
+                    tdMacd.textContent = stats.macd.toFixed(2);
+                    tdMacd.className = stats.macd > 0 ? 'positive' : 'negative';
+                    tr.appendChild(tdMacd);
+
+                    const tdUpper = document.createElement('td');
+                    tdUpper.textContent = stats.upper_band.toFixed(2);
+                    tr.appendChild(tdUpper);
+
+                    const tdLower = document.createElement('td');
+                    tdLower.textContent = stats.lower_band.toFixed(2);
+                    tr.appendChild(tdLower);
+
+                    tbody.appendChild(tr);
+                }
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('taTable').style.display = 'table';
+            })
+            .catch(err => {
+                document.getElementById('loading').textContent = 'Error loading data: ' + err.message;
+            });
+    </script>
+</body>
+</html>

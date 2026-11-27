@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat-Link Matrix | Trend Pulse by Corax CoLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--neon-blue, #00f0ff);
+            outline-offset: 2px;
+        }
+        body { margin: 0; padding: 20px; background-color: #020205; color: #00f0ff; font-family: 'Space Grotesk', sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .header { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 800px; margin-bottom: 20px; }
+        .title { font-size: 32px; font-weight: 700; text-shadow: 0 0 15px rgba(0, 240, 255, 0.8); }
+        .back-btn { padding: 8px 16px; background: rgba(0,0,0,0.6); border: 1px solid #00f0ff; color: #00f0ff; border-radius: 4px; text-decoration: none; font-size: 14px; transition: all 0.3s; }
+        .back-btn:hover { background: #00f0ff; color: #000; box-shadow: 0 0 10px #00f0ff; }
+
+        #matrix-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(10, 10, 25, 0.8);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00f0ff;
+            padding: 10px;
+            color: white;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 100;
+        }
+
+        .branding { margin-top: 30px; font-size: 12px; opacity: 0.6; text-align: center; }
+        .branding a { color: #00f0ff; text-decoration: none; }
+        .branding a:hover { text-decoration: underline; }
+
+        .legend { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; color: #aaa; width: 100%; max-width: 800px; }
+        .legend-gradient { height: 10px; flex-grow: 1; margin: 0 10px; background: linear-gradient(to right, #ff0055, #0a0a1a, #00ff88); }
+
+        /* Enhanced Heat-Link UI */
+        #matrix-container {
+            position: relative;
+            overflow: hidden;
+        }
+        #matrix-container::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(0,240,255,0.03) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        svg {
+            position: relative;
+            z-index: 1;
+        }
+        .title {
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ff0055, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            filter: drop-shadow(0 0 8px rgba(255,0,85,0.5));
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">Heat-Link: Live Asset Correlation</div>
+        <a href="/" class="back-btn">RETURN TO NEXUS</a>
+    </div>
+
+    <div id="matrix-container"></div>
+
+    <div class="legend">
+        <span>-1.0 (Inverse)</span>
+        <div class="legend-gradient"></div>
+        <span>+1.0 (Direct)</span>
+    </div>
+
+    <div class="branding">
+        Trend Pulse by <a href="https://coraxcolab.com" target="_blank" rel="noopener noreferrer">Corax CoLAB</a><br>
+        Developer: <a href="https://github.com/PelleNybe" target="_blank" rel="noopener noreferrer">Pelle</a> |
+        <a href="https://buymeacoffee.com/pellenybe" target="_blank" rel="noopener noreferrer">Sponsor</a>
+    </div>
+
+    <div id="tooltip" class="tooltip" aria-live="polite" aria-atomic="true"></div>
+
+    <script>
+        const assets = ["BTC", "ETH", "SOL", "AAPL", "MSFT", "NVDA", "TSLA", "GOLD", "OIL"];
+        const n = assets.length;
+
+        // Generate simulated correlation matrix
+
+        const margin = {top: 50, right: 0, bottom: 0, left: 50};
+        const width = 700;
+        const height = 700;
+
+        const svg = d3.select("#matrix-container")
+            .append("svg")
+            .attr("width", "100%")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleBand().range([0, width]).domain(assets).padding(0.05);
+        const y = d3.scaleBand().range([0, height]).domain(assets).padding(0.05);
+
+        svg.append("g")
+            .attr("class", "x-axis")
+            .call(d3.axisTop(x))
+            .selectAll("text")
+            .style("fill", "#00f0ff")
+            .style("font-size", "14px");
+
+        svg.append("g")
+            .attr("class", "y-axis")
+            .call(d3.axisLeft(y))
+            .selectAll("text")
+            .style("fill", "#00f0ff")
+            .style("font-size", "14px");
+
+        // Remove axes lines
+        svg.selectAll(".domain").remove();
+        svg.selectAll(".tick line").remove();
+
+        // Color Scale: Red (-1) to Black (0) to Green (+1)
+        const myColor = d3.scaleLinear()
+            .range(["#ff0055", "#0a0a1a", "#00ff88"])
+            .domain([-1, 0, 1]);
+
+        const tooltip = d3.select("#tooltip");
+
+
+        // Fetch real correlation data
+        async function drawMatrix() {
+            try {
+                const response = await fetch('/api/correlation_data');
+                const data = await response.json();
+
+                if (!data || data.length === 0) return;
+
+                // Make sure domains are set from actual data
+                const uniqueX = [...new Set(data.map(d => d.x))];
+                const uniqueY = [...new Set(data.map(d => d.y))];
+                x.domain(uniqueX);
+                y.domain(uniqueY);
+
+                // Clear existing axis and update
+                svg.selectAll(".axis").remove();
+                svg.append("g")
+                   .attr("class", "axis")
+                   .attr("transform", `translate(0, ${height})`)
+                   .call(d3.axisBottom(x))
+                   .select(".domain").remove();
+                svg.append("g")
+                   .attr("class", "axis")
+                   .call(d3.axisLeft(y))
+                   .select(".domain").remove();
+
+
+                // Enhance axis labels with hover
+                svg.selectAll(".axis text")
+                    .style("cursor", "pointer")
+                    .on("mouseover", function(event, textVal) {
+                        d3.select(this).style("fill", "#00f0ff").style("font-weight", "bold");
+                        svg.selectAll("rect")
+                           .style("opacity", d => (d.x === textVal || d.y === textVal) ? 1 : 0.2);
+                    })
+                    .on("mouseleave", function(event, textVal) {
+                        d3.select(this).style("fill", "white").style("font-weight", "normal");
+                        svg.selectAll("rect").style("opacity", 1);
+                    });
+
+                const squares = svg.selectAll("rect").data(data, d => d.x + ':' + d.y);
+
+                squares.enter()
+                    .append("rect")
+                    .merge(squares)
+                    .transition()
+                    .duration(1000)
+                    .attr("x", d => x(d.x))
+                    .attr("y", d => y(d.y))
+                    .attr("width", x.bandwidth())
+                    .attr("height", y.bandwidth())
+                    .style("fill", d => myColor(d.value))
+                    .attr("rx", 4)
+                    .attr("ry", 4)
+                    .style("stroke", "#0a0a1a")
+                    .style("stroke-width", 2);
+
+                // Re-bind mouse events since merge->transition clears some handlers or we just bind after enter
+                svg.selectAll("rect")
+                    .on("mouseover", function(event, d) {
+                        d3.select(this).style("stroke", "#00f0ff").style("stroke-width", 2);
+                        tooltip.style("opacity", 1)
+                               .html(`${d.y} &times; ${d.x}<br>Correlation: ${d.value.toFixed(2)}`)
+                               .style("left", (event.pageX + 10) + "px")
+                               .style("top", (event.pageY - 28) + "px");
+                    })
+                    .on("mouseleave", function(event, d) {
+                        d3.select(this).style("stroke", "#0a0a1a");
+                        tooltip.style("opacity", 0);
+                    });
+
+                squares.exit().remove();
+
+                const texts = svg.selectAll(".valText").data(data, d => d.x + ':' + d.y);
+
+                texts.enter()
+                    .append("text")
+                    .attr("class", "valText")
+                    .merge(texts)
+                    .transition()
+                    .duration(1000)
+                    .attr("x", d => x(d.x) + x.bandwidth()/2)
+                    .attr("y", d => y(d.y) + y.bandwidth()/2 + 5)
+                    .style("text-anchor", "middle")
+                    .style("font-size", "10px")
+                    .style("fill", "white")
+                    .style("pointer-events", "none")
+                    .text(d => d.value.toFixed(2));
+
+                texts.exit().remove();
+            } catch (err) {
+                console.error("Failed to update heat matrix", err);
+            }
+        }
+
+        drawMatrix();
+        setInterval(drawMatrix, 60000); // Update every 1 minute to avoid API spam
+
+    </script>
+</body>
+</html>
